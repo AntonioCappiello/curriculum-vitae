@@ -6,6 +6,8 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
 import android.view.Menu;
@@ -17,6 +19,8 @@ import android.webkit.WebViewClient;
 
 import com.antoniocappiello.curriculumvitae.BuildConfig;
 import com.antoniocappiello.curriculumvitae.R;
+import com.antoniocappiello.curriculumvitae.model.Category;
+import com.antoniocappiello.curriculumvitae.view.adapters.CategoryAdapter;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -36,6 +40,9 @@ public class MainActivity extends AppCompatActivity
     @Bind(R.id.nav_view)
     NavigationView mNavigationView;
 
+    @Bind(R.id.category_recycler_view)
+    RecyclerView mRecyclerView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,7 +53,17 @@ public class MainActivity extends AppCompatActivity
 
         initNavigationDrawer();
         initWebView();
+        initCategoryRecyclerView();
 
+    }
+
+    private void initCategoryRecyclerView() {
+        mRecyclerView.setHasFixedSize(true);
+        LinearLayoutManager mLayoutManager = new LinearLayoutManager(this);
+        mRecyclerView.setLayoutManager(mLayoutManager);
+
+        CategoryAdapter mCategoryAdapter = new CategoryAdapter(Category.values());
+        mRecyclerView.setAdapter(mCategoryAdapter);
     }
 
     private void initWebView() {

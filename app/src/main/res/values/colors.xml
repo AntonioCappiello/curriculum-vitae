@@ -12,5 +12,8 @@
     <color name="nav_bar_start">#FF9800</color>
     <color name="nav_bar_center">#FB6D00</color>
     <color name="nav_bar_end">#E85D00</color>
+    <color name="white">#FFFFFF</color>
+
+    <color name="category_titles_bg">#80FF9800</color>
 
 </resources>
