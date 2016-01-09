@@ -8,4 +8,6 @@
 
     <dimen name="category_title_text_size">18dp</dimen>
     <dimen name="category_view_height">160dp</dimen>
+    <dimen name="app_bar_height">240dp</dimen>
+    <dimen name="app_bar_image_height">215dp</dimen>
 </resources>

@@ -1,15 +1,18 @@
 package com.antoniocappiello.curriculumvitae.view.adapters;
 
-import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import com.orhanobut.logger.Logger;
 
 import com.antoniocappiello.curriculumvitae.R;
+import com.antoniocappiello.curriculumvitae.event.CategoryClickedEvent;
 import com.antoniocappiello.curriculumvitae.model.Category;
+
+import de.greenrobot.event.EventBus;
 
 public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHolder> {
 
@@ -29,8 +32,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        holder.mTitle.setText(mCategoryArray[position].getTitleResourceId());
-        holder.mImageView.setImageResource(mCategoryArray[position].getImageResourceId());
+        holder.updateView(mCategoryArray[position]);
     }
 
     @Override
@@ -38,14 +40,28 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
         return mCategoryArray.length;
     }
 
-    public static class ViewHolder extends RecyclerView.ViewHolder  {
-        private final TextView mTitle;
+    public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+        private final TextView mTitleTextView;
         private final ImageView mImageView;
+        private Category mCategory;
 
         public ViewHolder(View categoryView) {
             super(categoryView);
-            mTitle = (TextView) categoryView.findViewById(R.id.title);
+            categoryView.setOnClickListener(this);
+            mTitleTextView = (TextView) categoryView.findViewById(R.id.title);
             mImageView = (ImageView) categoryView.findViewById(R.id.image);
+        }
+
+        @Override
+        public void onClick(View v) {
+            Logger.e(mCategory.name());
+            EventBus.getDefault().post(new CategoryClickedEvent(mCategory, mImageView));
+        }
+
+        public void updateView(Category category) {
+            mTitleTextView.setText(category.getTitleResourceId());
+            mImageView.setImageResource(category.getImageResourceId());
+            mCategory = category;
         }
     }
 }
