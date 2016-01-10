@@ -19,4 +19,8 @@
     <dimen name="timeline_line_width">5dp</dimen>
 
     <dimen name="timeline_step_height">45dp</dimen>
+
+    <dimen name="book_item_height">160dp</dimen>
+    <dimen name="bookNameTextSize">16dp</dimen>
+    <dimen name="bookAuthorTextSize">12dp</dimen>
 </resources>

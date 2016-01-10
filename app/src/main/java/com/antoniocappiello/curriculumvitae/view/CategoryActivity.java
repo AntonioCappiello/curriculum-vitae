@@ -3,6 +3,8 @@ package com.antoniocappiello.curriculumvitae.view;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
@@ -15,6 +17,9 @@ import com.antoniocappiello.curriculumvitae.model.Category;
 import com.antoniocappiello.curriculumvitae.model.Education;
 import com.antoniocappiello.curriculumvitae.model.WorkExperience;
 import com.antoniocappiello.curriculumvitae.presenter.DateUtils;
+import com.antoniocappiello.curriculumvitae.presenter.adapter.BookAdapter;
+import com.antoniocappiello.curriculumvitae.presenter.adapter.CategoryAdapter;
+import com.antoniocappiello.curriculumvitae.presenter.adapter.WrappingLinearLayoutManager;
 import com.antoniocappiello.curriculumvitae.presenter.entityhandler.BookReader;
 import com.antoniocappiello.curriculumvitae.presenter.event.AboutMeReceivedEvent;
 import com.antoniocappiello.curriculumvitae.presenter.event.EducationReceivedEvent;
@@ -47,6 +52,9 @@ public class CategoryActivity extends AppCompatActivity {
     @Bind(R.id.category_content_root)
     LinearLayout mCategoryContentRoot;
 
+    @Bind(R.id.category_content_recycler_view)
+    RecyclerView mRecyclerView;
+
     private Category mCategory;
     private WebApiService mWebApiService;
 
@@ -73,20 +81,25 @@ public class CategoryActivity extends AppCompatActivity {
         }
         switch (mCategory){
             case PERSONAL_INFO:
+                mRecyclerView.setVisibility(View.GONE);
                 mWebApiService.readAboutMe();
                 break;
             case EDUCATION:
+                mRecyclerView.setVisibility(View.GONE);
                 mWebApiService.readEducation();
-
                 break;
             case WORK_EXPERIENCE:
+                mRecyclerView.setVisibility(View.GONE);
                 mWebApiService.readWorkExperience();
                 break;
             case LIBRARY:
-                List<Book> bookList = new BookReader().read();
-                for(Book book: bookList){
-                    Logger.e(book.toString());
-                }
+                mRecyclerView.setVisibility(View.VISIBLE);
+                mRecyclerView.setHasFixedSize(true);
+                WrappingLinearLayoutManager layoutManager = new WrappingLinearLayoutManager(this);
+                mRecyclerView.setLayoutManager(layoutManager);
+
+                BookAdapter bookAdapter = new BookAdapter(new BookReader().read());
+                mRecyclerView.setAdapter(bookAdapter);
                 break;
         }
     }
@@ -175,4 +188,5 @@ public class CategoryActivity extends AppCompatActivity {
             mCategoryContentRoot.addView(stepView);
         }
     }
+
 }
