@@ -116,17 +116,22 @@ public class MainActivity extends AppCompatActivity
 
         if (id == R.id.nav_cv) {
             mWebView.setVisibility(View.GONE);
+            mRecyclerView.setVisibility(View.VISIBLE);
         } else if (id == R.id.nav_website) {
             mWebView.setVisibility(View.VISIBLE);
+            mRecyclerView.setVisibility(View.GONE);
             mWebView.loadUrl(BuildConfig.URL_WEBSITE);
         } else if (id == R.id.nav_github) {
             mWebView.setVisibility(View.VISIBLE);
+            mRecyclerView.setVisibility(View.GONE);
             mWebView.loadUrl(BuildConfig.URL_GITHUB);
         } else if (id == R.id.nav_play_store) {
             mWebView.setVisibility(View.VISIBLE);
+            mRecyclerView.setVisibility(View.GONE);
             mWebView.loadUrl(BuildConfig.URL_PLAY_STORE);
         } else if (id == R.id.nav_stackoverflow) {
             mWebView.setVisibility(View.VISIBLE);
+            mRecyclerView.setVisibility(View.GONE);
             mWebView.loadUrl(BuildConfig.URL_STACKOVERFLOW);
         } else if (id == R.id.nav_share) {
 
