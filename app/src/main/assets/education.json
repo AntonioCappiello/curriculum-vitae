@@ -1,62 +1,63 @@
 {
-  "degree": [
+  "education": [
     {
+      "type": "Master degree",
       "provider": "Vrije Universiteit Amsterdam",
       "logoUrl": "https://media.licdn.com/media/p/2/000/015/107/07924c9.jpg",
       "name": "Global Software Engineering European Master (2nd year)",
       "year": "2012",
-      "grade": ""
     },
     {
+      "type": "Master degree",
       "provider": "Mälardalens högskola",
       "logoUrl": "https://media.licdn.com/mpr/mpr/shrink_200_200/p/1/005/009/3de/0dd265b.png",
       "name": "Global Software Engineering European Master (1st year)",
       "year": "2011",
-      "grade": ""
     },
     {
+      "type": "Bachelor's degree",
       "provider": "University of Salerno",
       "logoUrl": "https://media.licdn.com/mpr/mpr/shrink_200_200/p/5/005/03b/2f7/3e810dc.png",
-      "name": "Bachelor in Computer Science",
-      "fullName": "",
+      "name": "Computer Science",
       "year": "2009",
-      "grade": "110 cum laude"
-    }
-  ],
-  "certification": [
+    },
     {
+      "type": "Certification",
       "provider": "Coursera",
       "logoUrl": "https://media.licdn.com/media/p/2/005/022/2af/31750b1.png",
       "name": "Computer Networks",
       "year": "2013"
     },
     {
+      "type": "Certification",
       "provider": "Programming Cloud Services for Android Handheld Systems",
       "logoUrl": "https://media.licdn.com/media/p/2/005/022/2af/31750b1.png",
       "name": "Computer Networks",
       "year": "2014"
-    }
-  ],
-  "independentCourse":[
+    },
     {
+      "type": "Indipendent course",
       "provider": "Udacity",
       "logoUrl": "https://media.licdn.com/mpr/mpr/shrink_100_100/p/5/005/0a2/2d5/1c9585e.png",
       "name": "Product Design - Validation and UX through Design Sprints",
       "year": "2015"
     },
     {
+      "type": "Indipendent course",
       "provider": "Udacity",
       "logoUrl": "https://media.licdn.com/mpr/mpr/shrink_100_100/p/5/005/0a2/2d5/1c9585e.png",
       "name": "Android Performance",
       "year": "2015"
     },
     {
+      "type": "Indipendent course",
       "provider": "Udacity",
       "logoUrl": "https://media.licdn.com/mpr/mpr/shrink_100_100/p/5/005/0a2/2d5/1c9585e.png",
       "name": "Gradle for Android and Java",
       "year": "2015"
     },
     {
+      "type": "Indipendent course",
       "provider": "Udacity",
       "logoUrl": "https://media.licdn.com/mpr/mpr/shrink_100_100/p/5/005/0a2/2d5/1c9585e.png",
       "name": "A/B Testing",
