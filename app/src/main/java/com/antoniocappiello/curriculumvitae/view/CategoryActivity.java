@@ -9,10 +9,17 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.antoniocappiello.curriculumvitae.R;
+import com.antoniocappiello.curriculumvitae.controller.WebApiClientFactory;
+import com.antoniocappiello.curriculumvitae.controller.WebApiController;
 import com.antoniocappiello.curriculumvitae.model.Category;
+import com.google.gson.JsonElement;
+import com.orhanobut.logger.Logger;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import retrofit.Callback;
+import retrofit.RetrofitError;
+import retrofit.client.Response;
 
 public class CategoryActivity extends AppCompatActivity {
 
@@ -27,6 +34,9 @@ public class CategoryActivity extends AppCompatActivity {
     @Bind(R.id.image)
     ImageView mImageView;
 
+    private Category mCategory;
+    private WebApiController mWebApiController;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,11 +44,33 @@ public class CategoryActivity extends AppCompatActivity {
 
         ButterKnife.bind(this);
 
+        mCategory = (Category) getIntent().getExtras().get(CATEGORY);
+
         setSupportActionBar(mToolbar);
         setBackNavigation();
-        setDataInToolbar(getIntent().getExtras());
+        setDataInToolbar(mCategory);
+
+        loadContent();
 
     }
+
+    private void loadContent() {
+        if(mWebApiController == null){
+            mWebApiController = new WebApiController(new WebApiClientFactory().getClient());
+        }
+        switch (mCategory){
+            case PERSONAL_INFO:
+                mWebApiController.readAboutMe();
+                break;
+            case EDUCATION:
+                mWebApiController.readEducation();
+                break;
+            case WORK_EXPERIENCE:
+                mWebApiController.readWorkExperience();
+                break;
+        }
+    }
+
 
     private void setBackNavigation() {
         mToolbar.setNavigationIcon(getResources().getDrawable(R.drawable.ic_arrow_back_white_24dp, null));
@@ -61,8 +93,7 @@ public class CategoryActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void setDataInToolbar(Bundle extras) {
-        Category category = (Category) extras.get(CATEGORY);
+    public void setDataInToolbar(Category category) {
         mImageView.setImageResource(category.getImageResourceId());
         mCollapsingToolbarLayout.setTitle(getResources().getString(category.getTitleResourceId()));
     }
