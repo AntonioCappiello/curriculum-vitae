@@ -1,8 +1,6 @@
-package com.antoniocappiello.curriculumvitae.event;
+package com.antoniocappiello.curriculumvitae.presenter.event;
 
-import android.view.View;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.antoniocappiello.curriculumvitae.model.Category;
 

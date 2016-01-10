@@ -12,21 +12,19 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.transition.ChangeImageTransform;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.Window;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 import com.antoniocappiello.curriculumvitae.BuildConfig;
 import com.antoniocappiello.curriculumvitae.R;
-import com.antoniocappiello.curriculumvitae.event.CategoryClickedEvent;
+import com.antoniocappiello.curriculumvitae.presenter.event.CategoryClickedEvent;
 import com.antoniocappiello.curriculumvitae.model.Category;
-import com.antoniocappiello.curriculumvitae.view.adapters.CategoryAdapter;
+import com.antoniocappiello.curriculumvitae.presenter.adapter.CategoryAdapter;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;

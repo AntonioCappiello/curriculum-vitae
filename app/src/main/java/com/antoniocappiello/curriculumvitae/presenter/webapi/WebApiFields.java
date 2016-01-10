@@ -1,4 +1,4 @@
-package com.antoniocappiello.curriculumvitae.controller;
+package com.antoniocappiello.curriculumvitae.presenter.webapi;
 
 public class WebApiFields {
 
@@ -10,11 +10,13 @@ public class WebApiFields {
     public static String TYPE = "type";
     public static String PROVIDER = "provider";
     public static String YEAR = "year";
-    public static String WORK_EXPERIENCE = "role";
-    public static String ROLE = "company";
-    public static String COMPANY = "logoUrl";
-    public static String LOGO_URL = "start";
-    public static String START = "end";
+    public static String WORK_EXPERIENCE = "workExperience";
+    public static String ROLE = "role";
+    public static String COMPANY = "company";
+    public static String LOGO_URL = "logoUrl";
+    public static String START = "start";
+    public static String END = "end";
     public static String DESCRIPTION = "description";
     public static String KEY_WORDS = "keyWords";
+    public static String EDUCATION = "education";
 }

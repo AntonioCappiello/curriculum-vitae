@@ -1,10 +1,10 @@
-package com.antoniocappiello.curriculumvitae.controller;
+package com.antoniocappiello.curriculumvitae.presenter.webapi;
 
-public class WebApiController {
+public class WebApiService {
 
     private final WebApi mWebApi;
 
-    public WebApiController(WebApi webApi){
+    public WebApiService(WebApi webApi){
         mWebApi = webApi;
     }
 

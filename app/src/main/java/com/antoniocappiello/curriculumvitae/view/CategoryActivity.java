@@ -9,17 +9,19 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.antoniocappiello.curriculumvitae.R;
-import com.antoniocappiello.curriculumvitae.controller.WebApiClientFactory;
-import com.antoniocappiello.curriculumvitae.controller.WebApiController;
+import com.antoniocappiello.curriculumvitae.model.Education;
+import com.antoniocappiello.curriculumvitae.model.WorkExperience;
+import com.antoniocappiello.curriculumvitae.presenter.event.AboutMeReceivedEvent;
+import com.antoniocappiello.curriculumvitae.presenter.event.EducationReceivedEvent;
+import com.antoniocappiello.curriculumvitae.presenter.event.WorkExperienceReceivedEvent;
+import com.antoniocappiello.curriculumvitae.presenter.webapi.WebApiClientFactory;
+import com.antoniocappiello.curriculumvitae.presenter.webapi.WebApiService;
 import com.antoniocappiello.curriculumvitae.model.Category;
-import com.google.gson.JsonElement;
 import com.orhanobut.logger.Logger;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
-import retrofit.Callback;
-import retrofit.RetrofitError;
-import retrofit.client.Response;
+import de.greenrobot.event.EventBus;
 
 public class CategoryActivity extends AppCompatActivity {
 
@@ -35,7 +37,7 @@ public class CategoryActivity extends AppCompatActivity {
     ImageView mImageView;
 
     private Category mCategory;
-    private WebApiController mWebApiController;
+    private WebApiService mWebApiService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,18 +57,18 @@ public class CategoryActivity extends AppCompatActivity {
     }
 
     private void loadContent() {
-        if(mWebApiController == null){
-            mWebApiController = new WebApiController(new WebApiClientFactory().getClient());
+        if(mWebApiService == null){
+            mWebApiService = new WebApiService(new WebApiClientFactory().getClient());
         }
         switch (mCategory){
             case PERSONAL_INFO:
-                mWebApiController.readAboutMe();
+                mWebApiService.readAboutMe();
                 break;
             case EDUCATION:
-                mWebApiController.readEducation();
+                mWebApiService.readEducation();
                 break;
             case WORK_EXPERIENCE:
-                mWebApiController.readWorkExperience();
+                mWebApiService.readWorkExperience();
                 break;
         }
     }
@@ -96,5 +98,33 @@ public class CategoryActivity extends AppCompatActivity {
     public void setDataInToolbar(Category category) {
         mImageView.setImageResource(category.getImageResourceId());
         mCollapsingToolbarLayout.setTitle(getResources().getString(category.getTitleResourceId()));
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        EventBus.getDefault().register(this);
+    }
+
+    @Override
+    public void onStop() {
+        EventBus.getDefault().unregister(this);
+        super.onStop();
+    }
+
+    public void onEvent(AboutMeReceivedEvent event){
+        Logger.d(event.getAboutMe().toString());
+    }
+
+    public void onEvent(EducationReceivedEvent event){
+        for(Education education: event.getEducationList()) {
+            Logger.d(education.toString());
+        }
+    }
+
+    public void onEvent(WorkExperienceReceivedEvent event){
+        for(WorkExperience workExperience: event.getWorkExperienceList()){
+            Logger.d(workExperience.toString());
+        }
     }
 }

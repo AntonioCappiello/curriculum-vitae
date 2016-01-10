@@ -1,4 +1,4 @@
-package com.antoniocappiello.curriculumvitae.controller;
+package com.antoniocappiello.curriculumvitae.presenter.webapi;
 
 import com.antoniocappiello.curriculumvitae.BuildConfig;
 

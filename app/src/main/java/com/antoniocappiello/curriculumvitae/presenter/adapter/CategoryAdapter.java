@@ -1,4 +1,4 @@
-package com.antoniocappiello.curriculumvitae.view.adapters;
+package com.antoniocappiello.curriculumvitae.presenter.adapter;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -9,7 +9,7 @@ import android.widget.TextView;
 import com.orhanobut.logger.Logger;
 
 import com.antoniocappiello.curriculumvitae.R;
-import com.antoniocappiello.curriculumvitae.event.CategoryClickedEvent;
+import com.antoniocappiello.curriculumvitae.presenter.event.CategoryClickedEvent;
 import com.antoniocappiello.curriculumvitae.model.Category;
 
 import de.greenrobot.event.EventBus;
