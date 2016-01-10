@@ -22,9 +22,9 @@ import android.webkit.WebViewClient;
 
 import com.antoniocappiello.curriculumvitae.BuildConfig;
 import com.antoniocappiello.curriculumvitae.R;
-import com.antoniocappiello.curriculumvitae.presenter.event.CategoryClickedEvent;
 import com.antoniocappiello.curriculumvitae.model.Category;
 import com.antoniocappiello.curriculumvitae.presenter.adapter.CategoryAdapter;
+import com.antoniocappiello.curriculumvitae.presenter.event.CategoryClickedEvent;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -64,11 +64,11 @@ public class MainActivity extends AppCompatActivity
 
     private void initCategoryRecyclerView() {
         mRecyclerView.setHasFixedSize(true);
-        LinearLayoutManager mLayoutManager = new LinearLayoutManager(this);
-        mRecyclerView.setLayoutManager(mLayoutManager);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        mRecyclerView.setLayoutManager(layoutManager);
 
-        CategoryAdapter mCategoryAdapter = new CategoryAdapter(Category.values());
-        mRecyclerView.setAdapter(mCategoryAdapter);
+        CategoryAdapter categoryAdapter = new CategoryAdapter(Category.values());
+        mRecyclerView.setAdapter(categoryAdapter);
     }
 
     private void initWebView() {

@@ -1,19 +1,21 @@
 package com.antoniocappiello.curriculumvitae.model;
 
-public class Education {
+import java.util.Date;
+
+public class Education implements Comparable<Education>{
 
     private String mType;
     private String mProvider;
     private String mLogoUrl;
     private String mName;
-    private String mYear;
+    private Date mDate;
 
     private Education(Builder builder) {
         mType = builder.mType;
         mProvider = builder.mProvider;
         mLogoUrl = builder.mLogoUrl;
         mName = builder.mName;
-        mYear = builder.mYear;
+        mDate = builder.mDate;
     }
 
     public String getType() {
@@ -32,8 +34,8 @@ public class Education {
         return mName;
     }
 
-    public String getYear() {
-        return mYear;
+    public Date getDate() {
+        return mDate;
     }
 
     @Override
@@ -43,8 +45,13 @@ public class Education {
                 ", mProvider='" + mProvider + '\'' +
                 ", mLogoUrl='" + mLogoUrl + '\'' +
                 ", mName='" + mName + '\'' +
-                ", mYear='" + mYear + '\'' +
+                ", mDate='" + mDate + '\'' +
                 '}';
+    }
+
+    @Override
+    public int compareTo(Education another) {
+        return this.getDate().compareTo(another.getDate());
     }
 
     public static class Builder{
@@ -53,7 +60,7 @@ public class Education {
         private String mProvider;
         private String mLogoUrl;
         private String mName;
-        private String mYear;
+        private Date mDate;
 
         public Builder type(String type){
             mType = type;
@@ -75,8 +82,8 @@ public class Education {
             return this;
         }
 
-        public Builder year(String year){
-            mYear = year;
+        public Builder year(Date date){
+            mDate = date;
             return this;
         }
 

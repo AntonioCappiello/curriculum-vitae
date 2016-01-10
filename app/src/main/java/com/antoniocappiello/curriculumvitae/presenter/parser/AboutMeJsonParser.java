@@ -1,8 +1,15 @@
 package com.antoniocappiello.curriculumvitae.presenter.parser;
+
 import com.antoniocappiello.curriculumvitae.model.AboutMe;
 import com.google.gson.JsonObject;
+
 import org.json.JSONException;
-import static com.antoniocappiello.curriculumvitae.presenter.webapi.WebApiFields.*;
+
+import static com.antoniocappiello.curriculumvitae.presenter.webapi.WebApiFields.CAREER;
+import static com.antoniocappiello.curriculumvitae.presenter.webapi.WebApiFields.FREE_TIME;
+import static com.antoniocappiello.curriculumvitae.presenter.webapi.WebApiFields.NAME;
+import static com.antoniocappiello.curriculumvitae.presenter.webapi.WebApiFields.NATIONALITY;
+import static com.antoniocappiello.curriculumvitae.presenter.webapi.WebApiFields.OVERVIEW;
 
 public class AboutMeJsonParser {
 

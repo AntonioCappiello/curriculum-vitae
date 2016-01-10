@@ -1,6 +1,7 @@
 package com.antoniocappiello.curriculumvitae.presenter.webapi;
 
 import com.google.gson.JsonElement;
+
 import retrofit.Callback;
 import retrofit.http.GET;
 import retrofit.http.Path;

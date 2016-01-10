@@ -7,17 +7,23 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import com.antoniocappiello.curriculumvitae.R;
+import com.antoniocappiello.curriculumvitae.model.Category;
 import com.antoniocappiello.curriculumvitae.model.Education;
 import com.antoniocappiello.curriculumvitae.model.WorkExperience;
+import com.antoniocappiello.curriculumvitae.presenter.DateUtils;
 import com.antoniocappiello.curriculumvitae.presenter.event.AboutMeReceivedEvent;
 import com.antoniocappiello.curriculumvitae.presenter.event.EducationReceivedEvent;
 import com.antoniocappiello.curriculumvitae.presenter.event.WorkExperienceReceivedEvent;
 import com.antoniocappiello.curriculumvitae.presenter.webapi.WebApiClientFactory;
 import com.antoniocappiello.curriculumvitae.presenter.webapi.WebApiService;
-import com.antoniocappiello.curriculumvitae.model.Category;
 import com.orhanobut.logger.Logger;
+
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -35,6 +41,9 @@ public class CategoryActivity extends AppCompatActivity {
 
     @Bind(R.id.image)
     ImageView mImageView;
+
+    @Bind(R.id.category_content_root)
+    LinearLayout mCategoryContentRoot;
 
     private Category mCategory;
     private WebApiService mWebApiService;
@@ -66,6 +75,7 @@ public class CategoryActivity extends AppCompatActivity {
                 break;
             case EDUCATION:
                 mWebApiService.readEducation();
+
                 break;
             case WORK_EXPERIENCE:
                 mWebApiService.readWorkExperience();
@@ -117,10 +127,24 @@ public class CategoryActivity extends AppCompatActivity {
     }
 
     public void onEvent(EducationReceivedEvent event){
-        for(Education education: event.getEducationList()) {
-            Logger.d(education.toString());
+        List<Education> educationList = event.getEducationList();
+        Collections.sort(educationList);
+
+        Iterator<Education> it = educationList.iterator();
+        while (it.hasNext()){
+            Education education = it.next();
+            TimelineStepView stepView = new TimelineStepView.Builder(this)
+                    .setTitle(education.getName())
+                    .setSubtitle(education.getProvider())
+                    .setDate(DateUtils.yearFromDate(education.getDate()))
+                    .setLogo(education.getLogoUrl())
+                    .showLine(it.hasNext())
+                    .build();
+            mCategoryContentRoot.addView(stepView);
         }
+
     }
+
 
     public void onEvent(WorkExperienceReceivedEvent event){
         for(WorkExperience workExperience: event.getWorkExperienceList()){

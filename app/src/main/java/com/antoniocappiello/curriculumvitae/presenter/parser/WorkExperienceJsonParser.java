@@ -1,7 +1,6 @@
 package com.antoniocappiello.curriculumvitae.presenter.parser;
 
 import com.antoniocappiello.curriculumvitae.model.WorkExperience;
-import com.antoniocappiello.curriculumvitae.model.WorkExperience;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
@@ -13,17 +12,12 @@ import java.util.List;
 
 import static com.antoniocappiello.curriculumvitae.presenter.webapi.WebApiFields.COMPANY;
 import static com.antoniocappiello.curriculumvitae.presenter.webapi.WebApiFields.DESCRIPTION;
-import static com.antoniocappiello.curriculumvitae.presenter.webapi.WebApiFields.EDUCATION;
 import static com.antoniocappiello.curriculumvitae.presenter.webapi.WebApiFields.END;
 import static com.antoniocappiello.curriculumvitae.presenter.webapi.WebApiFields.KEY_WORDS;
 import static com.antoniocappiello.curriculumvitae.presenter.webapi.WebApiFields.LOGO_URL;
-import static com.antoniocappiello.curriculumvitae.presenter.webapi.WebApiFields.NAME;
-import static com.antoniocappiello.curriculumvitae.presenter.webapi.WebApiFields.PROVIDER;
 import static com.antoniocappiello.curriculumvitae.presenter.webapi.WebApiFields.ROLE;
 import static com.antoniocappiello.curriculumvitae.presenter.webapi.WebApiFields.START;
-import static com.antoniocappiello.curriculumvitae.presenter.webapi.WebApiFields.TYPE;
 import static com.antoniocappiello.curriculumvitae.presenter.webapi.WebApiFields.WORK_EXPERIENCE;
-import static com.antoniocappiello.curriculumvitae.presenter.webapi.WebApiFields.YEAR;
 
 public class WorkExperienceJsonParser {
 

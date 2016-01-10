@@ -1,12 +1,12 @@
 package com.antoniocappiello.curriculumvitae.presenter.webapi;
 
+import com.antoniocappiello.curriculumvitae.model.AboutMe;
 import com.antoniocappiello.curriculumvitae.model.Education;
 import com.antoniocappiello.curriculumvitae.model.WorkExperience;
 import com.antoniocappiello.curriculumvitae.presenter.event.AboutMeReceivedEvent;
 import com.antoniocappiello.curriculumvitae.presenter.event.EducationReceivedEvent;
 import com.antoniocappiello.curriculumvitae.presenter.event.WorkExperienceReceivedEvent;
 import com.antoniocappiello.curriculumvitae.presenter.parser.AboutMeJsonParser;
-import com.antoniocappiello.curriculumvitae.model.AboutMe;
 import com.antoniocappiello.curriculumvitae.presenter.parser.EducationJsonParser;
 import com.antoniocappiello.curriculumvitae.presenter.parser.WorkExperienceJsonParser;
 import com.google.gson.JsonElement;

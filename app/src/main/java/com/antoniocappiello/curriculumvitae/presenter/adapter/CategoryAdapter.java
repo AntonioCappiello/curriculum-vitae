@@ -6,11 +6,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.orhanobut.logger.Logger;
 
 import com.antoniocappiello.curriculumvitae.R;
-import com.antoniocappiello.curriculumvitae.presenter.event.CategoryClickedEvent;
 import com.antoniocappiello.curriculumvitae.model.Category;
+import com.antoniocappiello.curriculumvitae.presenter.event.CategoryClickedEvent;
+import com.orhanobut.logger.Logger;
 
 import de.greenrobot.event.EventBus;
 
@@ -25,9 +25,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View newCategoryView = LayoutInflater.from(parent.getContext()).inflate(R.layout.category_item, parent, false);
-
-        ViewHolder viewHolder = new ViewHolder(newCategoryView);
-        return viewHolder;
+        return new ViewHolder(newCategoryView);
     }
 
     @Override
