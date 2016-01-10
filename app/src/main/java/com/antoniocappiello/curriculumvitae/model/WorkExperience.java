@@ -1,12 +1,14 @@
 package com.antoniocappiello.curriculumvitae.model;
 
-public class WorkExperience {
+import java.util.Date;
+
+public class WorkExperience implements Comparable<WorkExperience>{
 
     private String mRole;
     private String mCompany;
     private String mLogoUrl;
-    private String mStart;
-    private String mEnd;
+    private Date mDateStart;
+    private Date mDateEnd;
     private String mDescription;
     private String mKeyWords;
 
@@ -14,8 +16,8 @@ public class WorkExperience {
         mRole = builder.mRole;
         mCompany = builder.mCompany;
         mLogoUrl = builder.mLogoUrl;
-        mStart = builder.mStart;
-        mEnd = builder.mEnd;
+        mDateStart = builder.mDateStart;
+        mDateEnd = builder.mDateEnd;
         mDescription = builder.mDescription;
         mKeyWords = builder.mKeyWords;
     }
@@ -32,12 +34,12 @@ public class WorkExperience {
         return mLogoUrl;
     }
 
-    public String getStart() {
-        return mStart;
+    public Date getDateStart() {
+        return mDateStart;
     }
 
-    public String getEnd() {
-        return mEnd;
+    public Date getDateEnd() {
+        return mDateEnd;
     }
 
     public String getDescription() {
@@ -49,24 +51,17 @@ public class WorkExperience {
     }
 
     @Override
-    public String toString() {
-        return "WorkExperience{" +
-                "mRole='" + mRole + '\'' +
-                ", mCompany='" + mCompany + '\'' +
-                ", mLogoUrl='" + mLogoUrl + '\'' +
-                ", mStart='" + mStart + '\'' +
-                ", mEnd='" + mEnd + '\'' +
-                ", mDescription='" + mDescription + '\'' +
-                ", mKeyWords='" + mKeyWords + '\'' +
-                '}';
+    public int compareTo(WorkExperience another) {
+        return this.getDateStart().compareTo(another.getDateStart());
     }
+
 
     public static class Builder {
         private String mRole;
         private String mCompany;
         private String mLogoUrl;
-        private String mStart;
-        private String mEnd;
+        private Date mDateStart;
+        private Date mDateEnd;
         private String mDescription;
         private String mKeyWords;
 
@@ -85,13 +80,13 @@ public class WorkExperience {
             return this;
         }
 
-        public Builder start(String start){
-            mStart = start;
+        public Builder startDate(Date date){
+            mDateStart = date;
             return this;
         }
 
-        public Builder end(String end){
-            mEnd = end;
+        public Builder endDate(Date date){
+            mDateEnd = date;
             return this;
         }
 

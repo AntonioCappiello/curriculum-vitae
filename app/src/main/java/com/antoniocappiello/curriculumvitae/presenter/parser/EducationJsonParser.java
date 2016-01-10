@@ -45,7 +45,7 @@ public class EducationJsonParser {
                 .provider(json.has(PROVIDER) ? json.get(PROVIDER).getAsString() : "")
                 .logoUrl(json.has(LOGO_URL) ? json.get(LOGO_URL).getAsString() : "")
                 .name(json.has(NAME) ? json.get(NAME).getAsString() : "")
-                .year(date) //TODO TO TEST WHEN IS DATE NULL
+                .year(date)
                 .build();
     }
 }

@@ -142,13 +142,31 @@ public class CategoryActivity extends AppCompatActivity {
                     .build();
             mCategoryContentRoot.addView(stepView);
         }
-
     }
 
 
     public void onEvent(WorkExperienceReceivedEvent event){
-        for(WorkExperience workExperience: event.getWorkExperienceList()){
-            Logger.d(workExperience.toString());
+        List<WorkExperience> workExperienceList = event.getWorkExperienceList();
+        Collections.sort(workExperienceList);
+
+        Iterator<WorkExperience> it = workExperienceList.iterator();
+        while (it.hasNext()){
+            WorkExperience workExperience = it.next();
+
+
+
+            String dateString = DateUtils.monthAndYearFromDate(workExperience.getDateStart())
+                    + "\n"
+                    + DateUtils.monthAndYearFromDate(workExperience.getDateEnd());
+
+            TimelineStepView stepView = new TimelineStepView.Builder(this)
+                    .setTitle(workExperience.getRole())
+                    .setSubtitle(workExperience.getCompany())
+                    .setDate(dateString)
+                    .setLogo(workExperience.getLogoUrl())
+                    .showLine(it.hasNext())
+                    .build();
+            mCategoryContentRoot.addView(stepView);
         }
     }
 }

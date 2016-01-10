@@ -12,7 +12,7 @@
     <dimen name="app_bar_image_height">215dp</dimen>
     <dimen name="timeline_title_text_size">16dp</dimen>
     <dimen name="timeline_subtitle_text_size">14dp</dimen>
-    <dimen name="timeline_date_text_size">14dp</dimen>
+    <dimen name="timeline_date_text_size">13dp</dimen>
 
     <dimen name="timeline_circle_size">45dp</dimen>
     <dimen name="timeline_circle_size_half_minus_line_width">20dp</dimen>

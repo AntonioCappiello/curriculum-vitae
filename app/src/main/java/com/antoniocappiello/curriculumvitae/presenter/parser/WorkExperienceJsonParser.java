@@ -1,13 +1,17 @@
 package com.antoniocappiello.curriculumvitae.presenter.parser;
 
 import com.antoniocappiello.curriculumvitae.model.WorkExperience;
+import com.antoniocappiello.curriculumvitae.presenter.DateUtils;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import com.orhanobut.logger.Logger;
 
 import org.json.JSONException;
 
+import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import static com.antoniocappiello.curriculumvitae.presenter.webapi.WebApiFields.COMPANY;
@@ -18,6 +22,7 @@ import static com.antoniocappiello.curriculumvitae.presenter.webapi.WebApiFields
 import static com.antoniocappiello.curriculumvitae.presenter.webapi.WebApiFields.ROLE;
 import static com.antoniocappiello.curriculumvitae.presenter.webapi.WebApiFields.START;
 import static com.antoniocappiello.curriculumvitae.presenter.webapi.WebApiFields.WORK_EXPERIENCE;
+import static com.antoniocappiello.curriculumvitae.presenter.webapi.WebApiFields.YEAR;
 
 public class WorkExperienceJsonParser {
 
@@ -32,12 +37,20 @@ public class WorkExperienceJsonParser {
     }
 
     private static WorkExperience parseSingle(JsonObject json) {
+        Date dateStart = null;
+        Date dateEnd = null;
+        try {
+            dateStart = DateUtils.dateFromMonthAndYear(json.has(START) ? json.get(START).getAsString() : "");
+            dateEnd = DateUtils.dateFromMonthAndYear(json.has(END) ? json.get(END).getAsString() : "");
+        } catch (ParseException e) {
+            Logger.e(e.toString());
+        }
         return new WorkExperience.Builder()
                 .role(json.has(ROLE) ? json.get(ROLE).getAsString() : "")
                 .company(json.has(COMPANY) ? json.get(COMPANY).getAsString() : "")
                 .logoUrl(json.has(LOGO_URL) ? json.get(LOGO_URL).getAsString() : "")
-                .start(json.has(START) ? json.get(START).getAsString() : "")
-                .end(json.has(END) ? json.get(END).getAsString() : "")
+                .startDate(dateStart)
+                .endDate(dateEnd)
                 .description(json.has(DESCRIPTION) ? json.get(DESCRIPTION).getAsString() : "")
                 .keyWords(json.has(KEY_WORDS) ? json.get(KEY_WORDS).getAsString() : "")
                 .build();

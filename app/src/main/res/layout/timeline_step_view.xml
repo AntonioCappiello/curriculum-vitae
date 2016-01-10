@@ -5,13 +5,13 @@
 
     <TextView
         android:id="@+id/date"
-        android:layout_marginRight="10dp"
-        android:layout_width="wrap_content"
+        android:layout_marginRight="8dp"
+        android:layout_width="60dp"
         android:layout_height="@dimen/timeline_circle_size"
-        android:gravity="center_vertical"
+        android:gravity="center_vertical|end"
         android:textSize="@dimen/timeline_date_text_size"
         android:textStyle="bold"
-        android:text="YYYY"/>
+        android:text="MM-YYYY"/>
 
     <de.hdodenhof.circleimageview.CircleImageView
         xmlns:app="http://schemas.android.com/apk/res-auto"
