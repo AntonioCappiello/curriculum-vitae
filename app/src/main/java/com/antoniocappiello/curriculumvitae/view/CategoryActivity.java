@@ -10,10 +10,12 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.antoniocappiello.curriculumvitae.R;
+import com.antoniocappiello.curriculumvitae.model.Book;
 import com.antoniocappiello.curriculumvitae.model.Category;
 import com.antoniocappiello.curriculumvitae.model.Education;
 import com.antoniocappiello.curriculumvitae.model.WorkExperience;
 import com.antoniocappiello.curriculumvitae.presenter.DateUtils;
+import com.antoniocappiello.curriculumvitae.presenter.entityhandler.BookReader;
 import com.antoniocappiello.curriculumvitae.presenter.event.AboutMeReceivedEvent;
 import com.antoniocappiello.curriculumvitae.presenter.event.EducationReceivedEvent;
 import com.antoniocappiello.curriculumvitae.presenter.event.WorkExperienceReceivedEvent;
@@ -79,6 +81,12 @@ public class CategoryActivity extends AppCompatActivity {
                 break;
             case WORK_EXPERIENCE:
                 mWebApiService.readWorkExperience();
+                break;
+            case LIBRARY:
+                List<Book> bookList = new BookReader().read();
+                for(Book book: bookList){
+                    Logger.e(book.toString());
+                }
                 break;
         }
     }
@@ -152,8 +160,6 @@ public class CategoryActivity extends AppCompatActivity {
         Iterator<WorkExperience> it = workExperienceList.iterator();
         while (it.hasNext()){
             WorkExperience workExperience = it.next();
-
-
 
             String dateString = DateUtils.monthAndYearFromDate(workExperience.getDateStart())
                     + "\n"
