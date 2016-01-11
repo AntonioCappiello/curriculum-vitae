@@ -8,9 +8,9 @@ import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 import android.test.suitebuilder.annotation.LargeTest;
 
-import com.antoniocappiello.curriculumvitae.App;
 import com.antoniocappiello.curriculumvitae.R;
 import com.antoniocappiello.curriculumvitae.TestApp;
+import com.antoniocappiello.curriculumvitae.model.AboutMe;
 import com.antoniocappiello.curriculumvitae.model.Category;
 import com.antoniocappiello.curriculumvitae.presenter.webapi.WebApiService;
 import com.antoniocappiello.curriculumvitae.view.CategoryActivity;
@@ -54,13 +54,38 @@ public class CategoryActivityPersonalInfoTest {
     }
 
     @Test
-    public void correctPersonalInfoTextIsDisplayed() {
-        JsonElement data = mWebApiService.readAboutMe().toBlocking().first();
-        onView(withId(R.id.content_text_view)).check(matches(withText(data.toString())));
+    public void correctNameIsDisplayed() {
+        AboutMe aboutMe = mWebApiService.readAboutMe().toBlocking().first();
+        onView(withId(R.id.full_name_value)).check(matches(withText(aboutMe.getName())));
     }
 
     @Test
-    public void gifIsDisplayed(){
+    public void correctNationalityIsDisplayed() {
+        AboutMe aboutMe = mWebApiService.readAboutMe().toBlocking().first();
+        onView(withId(R.id.nationality_value)).check(matches(withText(aboutMe.getNationality())));
+    }
+
+    @Test
+    public void correctOverviewIsDisplayed() {
+        AboutMe aboutMe = mWebApiService.readAboutMe().toBlocking().first();
+        onView(withId(R.id.overview_value)).check(matches(withText(aboutMe.getOverview())));
+    }
+
+    @Test
+    public void correctCarrerIsDisplayed() {
+        AboutMe aboutMe = mWebApiService.readAboutMe().toBlocking().first();
+        onView(withId(R.id.career_value)).check(matches(withText(aboutMe.getCareer())));
+    }
+
+    @Test
+    public void correctFreeTimeIsDisplayed() {
+        AboutMe aboutMe = mWebApiService.readAboutMe().toBlocking().first();
+        onView(withId(R.id.free_time_value)).check(matches(withText(aboutMe.getFreeTime())));
+    }
+
+    @Test
+    public void gifIsDisplayedAfterContentIsLoaded(){
+        mWebApiService.readAboutMe().toBlocking().first();
         onView(withId(R.id.gif_view)).check(matches(withEffectiveVisibility(ViewMatchers.Visibility.VISIBLE)));
     }
 }

@@ -2,6 +2,8 @@ package com.antoniocappiello.curriculumvitae.view;
 
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
+import android.support.design.widget.Snackbar;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -13,6 +15,7 @@ import android.widget.TextView;
 
 import com.antoniocappiello.curriculumvitae.App;
 import com.antoniocappiello.curriculumvitae.R;
+import com.antoniocappiello.curriculumvitae.model.AboutMe;
 import com.antoniocappiello.curriculumvitae.model.Category;
 import com.antoniocappiello.curriculumvitae.model.Education;
 import com.antoniocappiello.curriculumvitae.model.WorkExperience;
@@ -24,7 +27,7 @@ import com.antoniocappiello.curriculumvitae.presenter.event.EducationReceivedEve
 import com.antoniocappiello.curriculumvitae.presenter.event.WorkExperienceReceivedEvent;
 import com.antoniocappiello.curriculumvitae.presenter.webapi.WebApi;
 import com.antoniocappiello.curriculumvitae.presenter.webapi.WebApiService;
-import com.google.gson.JsonElement;
+import com.orhanobut.logger.Logger;
 
 import java.util.Collections;
 import java.util.Iterator;
@@ -35,6 +38,9 @@ import javax.inject.Inject;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import de.greenrobot.event.EventBus;
+import rx.Subscriber;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
 
 public class CategoryActivity extends AppCompatActivity {
 
@@ -58,14 +64,16 @@ public class CategoryActivity extends AppCompatActivity {
     @Bind(R.id.gif_view)
     GifView mGifView;
 
-    @Bind(R.id.content_text_view)
-    TextView mContentTextView;
+    @Bind(R.id.category_content_first_child)
+    LinearLayout mCategoryContentFirstChild;
 
     @Inject
     WebApi mWebApi;
 
     @Inject
     WebApiService mWebApiService;
+
+    private Category mCategory;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,26 +84,23 @@ public class CategoryActivity extends AppCompatActivity {
         setSupportActionBar(mToolbar);
         setBackNavigation();
         
-        Category category = (Category) getIntent().getExtras().get(CATEGORY);
-        setDataInToolbar(category);
-        loadContent(category);
+        mCategory = (Category) getIntent().getExtras().get(CATEGORY);
+        setDataInToolbar(mCategory);
+        loadContent(mCategory);
     }
 
     private void inject() {
         ((App)getApplication()).appComponent().inject(this);
     }
 
-    private void loadContent(Category category) {
+    private void loadContent(final Category category) {
         switch (category){
             case PERSONAL_INFO:
                 mRecyclerView.setVisibility(View.GONE);
-                mContentTextView.setVisibility(View.VISIBLE);
-                mGifView.setVisibility(View.VISIBLE);
-                mGifView.setMovieResource(R.mipmap.typing);
-
-                JsonElement data = mWebApiService.readAboutMe().toBlocking().first();
-                setDataInContentView(data);
-
+                mWebApiService.readAboutMe()
+                        .subscribeOn(Schedulers.newThread())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribe(getReadAboutMeSubscriber());
                 break;
             case EDUCATION:
                 mRecyclerView.setVisibility(View.GONE);
@@ -117,8 +122,59 @@ public class CategoryActivity extends AppCompatActivity {
         }
     }
 
-    private void setDataInContentView(JsonElement jsonElement) {
-        mContentTextView.setText(jsonElement.toString());
+    private Subscriber<? super AboutMe> getReadAboutMeSubscriber() {
+        return new Subscriber<AboutMe>() {
+            @Override
+            public void onCompleted() {}
+
+            @Override
+            public void onError(Throwable e) {
+                Logger.e(e.toString());
+                showSnackbar();
+            }
+
+            @Override
+            public void onNext(AboutMe aboutMe) {
+                setData(aboutMe);
+            }
+        };
+    }
+
+    private void showSnackbar() {
+        Snackbar.make(mCategoryContentRoot, getResources().getText(R.string.error_web_api_query_failed), Snackbar.LENGTH_LONG)
+                .setAction(getResources().getString(R.string.retry), new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        loadContent(mCategory);
+                    }
+                })
+                .setActionTextColor(ContextCompat.getColor(CategoryActivity.this, R.color.primary_dark))
+                .show();
+    }
+
+    private void setData(AboutMe aboutMe) {
+        mCategoryContentFirstChild.setVisibility(View.VISIBLE);
+        mGifView.setVisibility(View.VISIBLE);
+        mGifView.setMovieResource(R.mipmap.typing);
+
+        View aboutMeView = getLayoutInflater().inflate(R.layout.about_me, null);
+        mCategoryContentFirstChild.addView(aboutMeView);
+
+        ((TextView) aboutMeView.findViewById(R.id.full_name_value))
+                .setText(aboutMe.getName());
+
+        ((TextView) aboutMeView.findViewById(R.id.nationality_value))
+                .setText(aboutMe.getNationality());
+
+        ((TextView) aboutMeView.findViewById(R.id.overview_value))
+                .setText(aboutMe.getOverview());
+
+        ((TextView) aboutMeView.findViewById(R.id.career_value))
+                .setText(aboutMe.getCareer());
+
+        ((TextView) aboutMeView.findViewById(R.id.free_time_value))
+                .setText(aboutMe.getFreeTime());
+
     }
 
 

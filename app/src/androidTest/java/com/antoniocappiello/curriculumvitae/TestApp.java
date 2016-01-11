@@ -1,8 +1,5 @@
 package com.antoniocappiello.curriculumvitae;
 
-import android.app.Application;
-import android.test.ApplicationTestCase;
-
 import com.antoniocappiello.curriculumvitae.injector.DaggerTestAppComponent;
 import com.antoniocappiello.curriculumvitae.injector.TestAppComponent;
 import com.antoniocappiello.curriculumvitae.injector.TestAppModule;
