@@ -55,7 +55,7 @@ public class CategoryActivityPersonalInfoTest {
     }
 
     @Test
-    public void correctWeatherDataDisplayed() {
+    public void correctPersonalInfoTextIsDisplayed() {
         JsonElement data = mWebApiService.readAboutMe().toBlocking().first();
         onView(withId(R.id.content_text_view)).check(matches(withText(data.toString())));
     }
