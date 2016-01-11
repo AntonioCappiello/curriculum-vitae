@@ -3,6 +3,7 @@ package com.antoniocappiello.curriculumvitae.espresso;
 import android.content.Context;
 import android.content.Intent;
 import android.support.test.InstrumentationRegistry;
+import android.support.test.espresso.matcher.ViewMatchers;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 import android.test.suitebuilder.annotation.LargeTest;
@@ -10,12 +11,10 @@ import android.test.suitebuilder.annotation.LargeTest;
 import com.antoniocappiello.curriculumvitae.App;
 import com.antoniocappiello.curriculumvitae.R;
 import com.antoniocappiello.curriculumvitae.model.Category;
-import com.antoniocappiello.curriculumvitae.presenter.webapi.WebApi;
 import com.antoniocappiello.curriculumvitae.presenter.webapi.WebApiService;
 import com.antoniocappiello.curriculumvitae.view.CategoryActivity;
 import com.antoniocappiello.curriculumvitae.view.MainActivity;
 import com.google.gson.JsonElement;
-import com.orhanobut.logger.Logger;
 
 import org.junit.Before;
 import org.junit.Rule;
@@ -26,6 +25,7 @@ import javax.inject.Inject;
 
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
+import static android.support.test.espresso.matcher.ViewMatchers.withEffectiveVisibility;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
 
@@ -58,5 +58,10 @@ public class CategoryActivityPersonalInfoTest {
     public void correctPersonalInfoTextIsDisplayed() {
         JsonElement data = mWebApiService.readAboutMe().toBlocking().first();
         onView(withId(R.id.content_text_view)).check(matches(withText(data.toString())));
+    }
+
+    @Test
+    public void gifIsDisplayed(){
+        onView(withId(R.id.gif_view)).check(matches(withEffectiveVisibility(ViewMatchers.Visibility.VISIBLE)));
     }
 }
