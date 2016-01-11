@@ -23,4 +23,5 @@
     <dimen name="book_item_height">160dp</dimen>
     <dimen name="bookNameTextSize">16dp</dimen>
     <dimen name="bookAuthorTextSize">12dp</dimen>
+    <dimen name="content_text_size">15dp</dimen>
 </resources>

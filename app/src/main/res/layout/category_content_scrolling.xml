@@ -13,13 +13,33 @@
     <LinearLayout
         android:id="@+id/category_content_root"
         android:orientation="vertical"
-        android:padding="20dp"
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/content_text_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:paddingBottom="20dp"
+            android:textSize="@dimen/content_text_size"
+            android:visibility="gone"/>
+
+        <com.antoniocappiello.curriculumvitae.view.GifView
+            android:id="@+id/gif_view"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_gravity="center"
+            android:visibility="gone"/>
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/category_content_recycler_view"
             android:scrollbars="vertical"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:visibility="gone"/>

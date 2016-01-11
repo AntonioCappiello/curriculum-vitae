@@ -3,22 +3,20 @@ package com.antoniocappiello.curriculumvitae.view;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.antoniocappiello.curriculumvitae.R;
-import com.antoniocappiello.curriculumvitae.model.Book;
 import com.antoniocappiello.curriculumvitae.model.Category;
 import com.antoniocappiello.curriculumvitae.model.Education;
 import com.antoniocappiello.curriculumvitae.model.WorkExperience;
 import com.antoniocappiello.curriculumvitae.presenter.DateUtils;
 import com.antoniocappiello.curriculumvitae.presenter.adapter.BookAdapter;
-import com.antoniocappiello.curriculumvitae.presenter.adapter.CategoryAdapter;
 import com.antoniocappiello.curriculumvitae.presenter.adapter.WrappingLinearLayoutManager;
 import com.antoniocappiello.curriculumvitae.presenter.entityhandler.BookReader;
 import com.antoniocappiello.curriculumvitae.presenter.event.AboutMeReceivedEvent;
@@ -26,7 +24,6 @@ import com.antoniocappiello.curriculumvitae.presenter.event.EducationReceivedEve
 import com.antoniocappiello.curriculumvitae.presenter.event.WorkExperienceReceivedEvent;
 import com.antoniocappiello.curriculumvitae.presenter.webapi.WebApiClientFactory;
 import com.antoniocappiello.curriculumvitae.presenter.webapi.WebApiService;
-import com.orhanobut.logger.Logger;
 
 import java.util.Collections;
 import java.util.Iterator;
@@ -54,6 +51,12 @@ public class CategoryActivity extends AppCompatActivity {
 
     @Bind(R.id.category_content_recycler_view)
     RecyclerView mRecyclerView;
+
+    @Bind(R.id.gif_view)
+    GifView mGifView;
+
+    @Bind(R.id.content_text_view)
+    TextView mContentTextView;
 
     private Category mCategory;
     private WebApiService mWebApiService;
@@ -83,6 +86,9 @@ public class CategoryActivity extends AppCompatActivity {
             case PERSONAL_INFO:
                 mRecyclerView.setVisibility(View.GONE);
                 mWebApiService.readAboutMe();
+                mContentTextView.setVisibility(View.VISIBLE);
+                mGifView.setVisibility(View.VISIBLE);
+                mGifView.setMovieResource(R.mipmap.typing);
                 break;
             case EDUCATION:
                 mRecyclerView.setVisibility(View.GONE);
@@ -144,7 +150,7 @@ public class CategoryActivity extends AppCompatActivity {
     }
 
     public void onEvent(AboutMeReceivedEvent event){
-        Logger.d(event.getAboutMe().toString());
+        mContentTextView.setText(event.getAboutMe().toString());
     }
 
     public void onEvent(EducationReceivedEvent event){
