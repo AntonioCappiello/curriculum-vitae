@@ -34,7 +34,7 @@ android {
         buildConfigField 'String', 'URL_PLAY_STORE', '"https://play.google.com/store/apps/developer?id=Selanto+Apps"'
         buildConfigField 'String', 'WEB_API_APP_SERVICE_URL', '"https://raw.githubusercontent.com/AntonioCappiello/curriculum-vitae/develop/app/src/main"'
 
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "com.antoniocappiello.curriculumvitae.TestAppRunner"
 
     }
     buildTypes {

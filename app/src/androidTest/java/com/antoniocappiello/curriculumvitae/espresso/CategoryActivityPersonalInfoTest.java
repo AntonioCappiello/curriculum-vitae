@@ -10,6 +10,7 @@ import android.test.suitebuilder.annotation.LargeTest;
 
 import com.antoniocappiello.curriculumvitae.App;
 import com.antoniocappiello.curriculumvitae.R;
+import com.antoniocappiello.curriculumvitae.TestApp;
 import com.antoniocappiello.curriculumvitae.model.Category;
 import com.antoniocappiello.curriculumvitae.presenter.webapi.WebApiService;
 import com.antoniocappiello.curriculumvitae.view.CategoryActivity;
@@ -49,9 +50,7 @@ public class CategoryActivityPersonalInfoTest {
 
     @Before
     public void setUp() {
-        mWebApiService = ((App) activityTestRule.getActivity().getApplication())
-                .appComponent()
-                .webApiService();
+        ((TestApp) activityTestRule.getActivity().getApplication()).appComponent().inject(this);
     }
 
     @Test
