@@ -1,6 +1,6 @@
 package com.antoniocappiello.curriculumvitae.mock;
 
-import com.antoniocappiello.curriculumvitae.presenter.AssetUtils;
+import com.antoniocappiello.curriculumvitae.model.AboutMe;
 import com.antoniocappiello.curriculumvitae.presenter.webapi.WebApi;
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
@@ -18,8 +18,8 @@ public class MockWebApi implements WebApi {
     }
 
     @Override
-    public Observable<JsonElement> readAssetWithObservable(@Path("fileName") String fileName) {
-        JsonElement aboutMeJsonElement = new Gson().fromJson(TestData.ABOUT_ME_JSON, JsonElement.class);
-        return Observable.just(aboutMeJsonElement).delay(1, TimeUnit.SECONDS);
+    public Observable<AboutMe> readAssetWithObservable(@Path("fileName") String fileName) {
+        AboutMe aboutMe = new Gson().fromJson(TestData.ABOUT_ME_JSON, AboutMe.class);
+        return Observable.just(aboutMe).delay(1, TimeUnit.SECONDS);
     }
 }
