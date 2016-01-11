@@ -20,11 +20,11 @@ import com.antoniocappiello.curriculumvitae.presenter.DateUtils;
 import com.antoniocappiello.curriculumvitae.presenter.adapter.BookAdapter;
 import com.antoniocappiello.curriculumvitae.presenter.adapter.WrappingLinearLayoutManager;
 import com.antoniocappiello.curriculumvitae.presenter.entityhandler.BookReader;
-import com.antoniocappiello.curriculumvitae.presenter.event.AboutMeReceivedEvent;
 import com.antoniocappiello.curriculumvitae.presenter.event.EducationReceivedEvent;
 import com.antoniocappiello.curriculumvitae.presenter.event.WorkExperienceReceivedEvent;
 import com.antoniocappiello.curriculumvitae.presenter.webapi.WebApi;
 import com.antoniocappiello.curriculumvitae.presenter.webapi.WebApiService;
+import com.google.gson.JsonElement;
 
 import java.util.Collections;
 import java.util.Iterator;
@@ -89,10 +89,13 @@ public class CategoryActivity extends AppCompatActivity {
         switch (category){
             case PERSONAL_INFO:
                 mRecyclerView.setVisibility(View.GONE);
-                mWebApiService.readAboutMe();
                 mContentTextView.setVisibility(View.VISIBLE);
                 mGifView.setVisibility(View.VISIBLE);
                 mGifView.setMovieResource(R.mipmap.typing);
+
+                JsonElement data = mWebApiService.readAboutMe().toBlocking().first();
+                setDataInContentView(data);
+
                 break;
             case EDUCATION:
                 mRecyclerView.setVisibility(View.GONE);
@@ -112,6 +115,10 @@ public class CategoryActivity extends AppCompatActivity {
                 mRecyclerView.setAdapter(bookAdapter);
                 break;
         }
+    }
+
+    private void setDataInContentView(JsonElement jsonElement) {
+        mContentTextView.setText(jsonElement.toString());
     }
 
 
@@ -151,10 +158,6 @@ public class CategoryActivity extends AppCompatActivity {
     public void onStop() {
         EventBus.getDefault().unregister(this);
         super.onStop();
-    }
-
-    public void onEvent(AboutMeReceivedEvent event){
-        mContentTextView.setText(event.getAboutMe().toString());
     }
 
     public void onEvent(EducationReceivedEvent event){
