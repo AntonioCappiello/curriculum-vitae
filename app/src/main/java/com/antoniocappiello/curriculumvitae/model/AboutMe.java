@@ -1,11 +1,18 @@
 package com.antoniocappiello.curriculumvitae.model;
 
+import com.google.gson.annotations.SerializedName;
+
 public class AboutMe {
 
+    @SerializedName("name")
     private String mName;
+    @SerializedName("nationality")
     private String mNationality;
+    @SerializedName("overview")
     private String mOverview;
+    @SerializedName("career")
     private String mCareer;
+    @SerializedName("free time")
     private String mFreeTime;
 
     private AboutMe(Builder builder) {
@@ -14,6 +21,26 @@ public class AboutMe {
         mOverview = builder.mOverview;
         mCareer = builder.mCareer;
         mFreeTime = builder.mFreeTime;
+    }
+
+    public String getName() {
+        return mName;
+    }
+
+    public String getNationality() {
+        return mNationality;
+    }
+
+    public String getOverview() {
+        return mOverview;
+    }
+
+    public String getCareer() {
+        return mCareer;
+    }
+
+    public String getFreeTime() {
+        return mFreeTime;
     }
 
     @Override

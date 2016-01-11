@@ -1,5 +1,6 @@
 package com.antoniocappiello.curriculumvitae.presenter.webapi;
 
+import com.antoniocappiello.curriculumvitae.model.AboutMe;
 import com.google.gson.JsonElement;
 
 import rx.Observable;
@@ -12,7 +13,7 @@ public class WebApiService {
         mWebApi = webApi;
     }
 
-    public Observable<JsonElement> readAboutMe(){
+    public Observable<AboutMe> readAboutMe(){
         return mWebApi.readAssetWithObservable(
                 "about_me.json");
     }

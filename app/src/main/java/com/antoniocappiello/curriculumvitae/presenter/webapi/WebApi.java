@@ -1,5 +1,6 @@
 package com.antoniocappiello.curriculumvitae.presenter.webapi;
 
+import com.antoniocappiello.curriculumvitae.model.AboutMe;
 import com.google.gson.JsonElement;
 
 import retrofit.Callback;
@@ -17,7 +18,7 @@ public interface WebApi {
 
 
     @GET("/assets/{fileName}")
-    Observable<JsonElement> readAssetWithObservable(
+    Observable<AboutMe> readAssetWithObservable(
             @Path("fileName") String fileName);
 
 }

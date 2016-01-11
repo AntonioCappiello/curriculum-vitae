@@ -5,10 +5,12 @@ import android.content.Context;
 import com.antoniocappiello.curriculumvitae.BuildConfig;
 import com.antoniocappiello.curriculumvitae.presenter.webapi.WebApi;
 import com.antoniocappiello.curriculumvitae.presenter.webapi.WebApiService;
+import com.google.gson.Gson;
 
 import dagger.Module;
 import dagger.Provides;
 import retrofit.RestAdapter;
+import retrofit.converter.GsonConverter;
 
 @Module
 public class AppModule {
@@ -29,7 +31,8 @@ public class AppModule {
     public WebApi provideWebApi() {
         return new RestAdapter.Builder()
                 .setEndpoint(BuildConfig.WEB_API_APP_SERVICE_URL)
-                .setLogLevel(RestAdapter.LogLevel.FULL)
+//                .setLogLevel(RestAdapter.LogLevel.FULL)
+                .setConverter(new GsonConverter(new Gson()))
                 .build()
                 .create(WebApi.class);
     }

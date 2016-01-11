@@ -12,4 +12,11 @@
     <string name="work_experience">Work Experience</string>
     <string name="interests">Interests</string>
     <string name="library">Library</string>
+    <string name="ful_name">Full name</string>
+    <string name="nationality">Nationality</string>
+    <string name="overview">Overview</string>
+    <string name="career">Career</string>
+    <string name="free_time">Free time</string>
+    <string name="error_web_api_query_failed">Cannot load data. Check network.</string>
+    <string name="retry">Retry</string>
 </resources>

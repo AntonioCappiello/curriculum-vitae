@@ -20,11 +20,15 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
+import com.antoniocappiello.curriculumvitae.App;
 import com.antoniocappiello.curriculumvitae.BuildConfig;
 import com.antoniocappiello.curriculumvitae.R;
 import com.antoniocappiello.curriculumvitae.model.Category;
 import com.antoniocappiello.curriculumvitae.presenter.adapter.CategoryAdapter;
 import com.antoniocappiello.curriculumvitae.presenter.event.CategoryClickedEvent;
+import com.antoniocappiello.curriculumvitae.presenter.webapi.WebApiService;
+
+import javax.inject.Inject;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
