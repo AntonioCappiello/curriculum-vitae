@@ -22,7 +22,6 @@ import static com.antoniocappiello.curriculumvitae.presenter.webapi.WebApiFields
 import static com.antoniocappiello.curriculumvitae.presenter.webapi.WebApiFields.ROLE;
 import static com.antoniocappiello.curriculumvitae.presenter.webapi.WebApiFields.START;
 import static com.antoniocappiello.curriculumvitae.presenter.webapi.WebApiFields.WORK_EXPERIENCE;
-import static com.antoniocappiello.curriculumvitae.presenter.webapi.WebApiFields.YEAR;
 
 public class WorkExperienceJsonParser {
 

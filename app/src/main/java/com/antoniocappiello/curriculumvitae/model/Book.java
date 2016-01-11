@@ -1,7 +1,6 @@
 package com.antoniocappiello.curriculumvitae.model;
 
 
-import com.google.gson.JsonElement;
 import com.raizlabs.android.dbflow.annotation.Column;
 import com.raizlabs.android.dbflow.annotation.PrimaryKey;
 import com.raizlabs.android.dbflow.annotation.Table;

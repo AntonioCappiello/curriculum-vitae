@@ -9,14 +9,9 @@ import android.widget.TextView;
 
 import com.antoniocappiello.curriculumvitae.R;
 import com.antoniocappiello.curriculumvitae.model.Book;
-import com.antoniocappiello.curriculumvitae.model.Category;
-import com.antoniocappiello.curriculumvitae.presenter.event.CategoryClickedEvent;
 import com.nostra13.universalimageloader.core.ImageLoader;
-import com.orhanobut.logger.Logger;
 
 import java.util.List;
-
-import de.greenrobot.event.EventBus;
 
 public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
 
