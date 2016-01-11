@@ -5,7 +5,6 @@ import android.content.Context;
 import com.antoniocappiello.curriculumvitae.presenter.webapi.WebApi;
 import com.antoniocappiello.curriculumvitae.presenter.webapi.WebApiService;
 import com.antoniocappiello.curriculumvitae.view.CategoryActivity;
-import com.antoniocappiello.curriculumvitae.view.MainActivity;
 
 import dagger.Component;
 

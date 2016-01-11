@@ -1,7 +1,6 @@
 package com.antoniocappiello.curriculumvitae.presenter.webapi;
 
 import com.antoniocappiello.curriculumvitae.model.AboutMe;
-import com.google.gson.JsonElement;
 
 import rx.Observable;
 
