@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.antoniocappiello.curriculumvitae.App;
 import com.antoniocappiello.curriculumvitae.R;
 import com.antoniocappiello.curriculumvitae.model.Category;
 import com.antoniocappiello.curriculumvitae.model.Education;
@@ -22,12 +23,14 @@ import com.antoniocappiello.curriculumvitae.presenter.entityhandler.BookReader;
 import com.antoniocappiello.curriculumvitae.presenter.event.AboutMeReceivedEvent;
 import com.antoniocappiello.curriculumvitae.presenter.event.EducationReceivedEvent;
 import com.antoniocappiello.curriculumvitae.presenter.event.WorkExperienceReceivedEvent;
-import com.antoniocappiello.curriculumvitae.presenter.webapi.WebApiClientFactory;
+import com.antoniocappiello.curriculumvitae.presenter.webapi.WebApi;
 import com.antoniocappiello.curriculumvitae.presenter.webapi.WebApiService;
 
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
+
+import javax.inject.Inject;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -58,31 +61,32 @@ public class CategoryActivity extends AppCompatActivity {
     @Bind(R.id.content_text_view)
     TextView mContentTextView;
 
-    private Category mCategory;
-    private WebApiService mWebApiService;
+    @Inject
+    WebApi mWebApi;
+
+    @Inject
+    WebApiService mWebApiService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_category);
-
         ButterKnife.bind(this);
-
-        mCategory = (Category) getIntent().getExtras().get(CATEGORY);
-
+        inject();
         setSupportActionBar(mToolbar);
         setBackNavigation();
-        setDataInToolbar(mCategory);
-
-        loadContent();
-
+        
+        Category category = (Category) getIntent().getExtras().get(CATEGORY);
+        setDataInToolbar(category);
+        loadContent(category);
     }
 
-    private void loadContent() {
-        if(mWebApiService == null){
-            mWebApiService = new WebApiService(new WebApiClientFactory().getClient());
-        }
-        switch (mCategory){
+    private void inject() {
+        ((App)getApplication()).appComponent().inject(this);
+    }
+
+    private void loadContent(Category category) {
+        switch (category){
             case PERSONAL_INFO:
                 mRecyclerView.setVisibility(View.GONE);
                 mWebApiService.readAboutMe();

@@ -8,6 +8,9 @@ import com.antoniocappiello.curriculumvitae.presenter.AssetUtils;
 import com.antoniocappiello.curriculumvitae.presenter.entityhandler.BookEntityOrchestrator;
 import com.antoniocappiello.curriculumvitae.presenter.entityhandler.BookSaver;
 import com.antoniocappiello.curriculumvitae.presenter.entityhandler.BookValidator;
+import com.antoniocappiello.curriculumvitae.presenter.injector.AppComponent;
+import com.antoniocappiello.curriculumvitae.presenter.injector.AppModule;
+import com.antoniocappiello.curriculumvitae.presenter.injector.DaggerAppComponent;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
@@ -25,6 +28,7 @@ import java.io.IOException;
 public class App extends Application {
 
     private static final String LIBRARY_DATABASE_INITIALIZED = "libDbInit";
+    private AppComponent appComponent;
 
     @Override
     public void onCreate() {
@@ -44,10 +48,21 @@ public class App extends Application {
 
         initImageLoader();
 
-        FlowManager.init(this);
+        initDependencyInjection();
 
+        FlowManager.init(this);
         initDatabase();
 
+    }
+
+    private void initDependencyInjection() {
+        appComponent = DaggerAppComponent.builder()
+                .appModule(new AppModule(this))
+                .build();
+    }
+
+    public AppComponent appComponent() {
+        return appComponent;
     }
 
     private void initDatabase() {
