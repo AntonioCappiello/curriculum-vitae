@@ -1,0 +1,49 @@
+{
+  "workExperience": [
+    {
+      "role": "Android Developer",
+      "company": "Coolblue",
+      "logoUrl": "https://media.licdn.com/media/p/3/005/00e/281/0351a48.png",
+      "start": "11-2014",
+      "end": "to Present",
+      "description":"I have been the first Android developer at Coolblue and, as such, I have been responsible not only for building the Mobile Apps Team, but also for implementing the very first company’s app .\n\nAs the first android developer I have plenty of responsibilities, some of which are:\n\n- taking care of all android development processes, from app design to publishing;\n- working closely to stakeholders to define product specs and satisfy their needs with amazing apps;\n- designing new features for our apps in cooperation with very talented UI designers\n- gathering and implementing feedback from our UX and User Research experts;\n- quickly prototyping new functionalities;\n- implementing features and bug fixes following the Agile Scrum process;\n- making sure the high quality standards of Coolblue are achieved by doing code reviews compliant to our guidelines and by ensuring high test coverage;\n- implementing automated tests (unit, integration and UI based tests);\n- ensuring that our codebase technical debt stays at a minimum level by executing design and code refactoring whenever needed;\n- implementing our Continuous Integration and Continuous Delivery pipeline by configuring and monitoring our teamcity environment, device lab and Google play;\n- conducting alpha and beta testing;\n- implementing and maintaining a repository of internal libraries;\n- researching and introducing to our company the latest Android development practices, tools and libraries by following several learning channels (Pluralsight, Udacity, Android dev blogs), thought leaders, courses and local development communities;\n- giving product demos and presentations at the end of each 2-weeks sprint.",
+      "keyWords":"Android studio, genymotion, sketchapp, InVision, git, SourceTree, GitHub, jUnit and Espresso frameworks, Gradle, Teamcity, Google Analytics, Fabric, Crashlytics, Retrofit, Butterknife, Dagger, DBFlow, Picasso, LeakCanary, Animations, Guava, EventBus, Findbug, Pmd."
+    },
+    {
+      "role": "Android/Linux/Network Engineer",
+      "company": "Sitecom Europe BV",
+      "logoUrl": "https://media.licdn.com/mpr/mpr/shrink_200_200/AAEAAQAAAAAAAALoAAAAJDI2MDE5MGVhLWU3MGEtNGZiNS1hMzUwLWQxNWI5YmRlOGJkNQ.png",
+      "start": "2-2013",
+      "end": "10-2014",
+      "description":"Involved in the design and development of applications for different kind of networking devices such as routers, networking media players, IP Cams, etc. ",
+      "keyWords":"Networking protocols, Embedded applications, Desktop applications, Embedded programming, Mac OS X development, .NET, iOS/Android development, Git, GitHub, Redmine, Gradle, SourceTree, Eclipse, ADT, xCode."
+    },
+    {
+      "role": "Online Games Verification Engineer",
+      "company": "Gaming Laboratories International",
+      "logoUrl": "https://media.licdn.com/media/p/3/000/123/386/1a1f0c9.png",
+      "start": "8-2012",
+      "end": "1-2013",
+      "description":"Regulatory compliance verification of gambling products, base and game platforms.\nDesign and execute test scenarios from source code level until system level.\nAnayze, verify and validate complex system architecures based on the most recent development frameworks and languages.",
+      "keyWords":"Java, C++, C, XML, SQL, Web Services, Web Technologies, Dev Tools, SVN, VPN, SFTP"
+    },
+    {
+      "role": "Software Architect Junior",
+      "company": "WoodWing",
+      "logoUrl": "https://media.licdn.com/media/p/2/000/040/0c9/0cc5153.png",
+      "start": "1-2012",
+      "end": "7-2012",
+      "description":"Defined a refactoring strategy to improve software architecture and evolvability of a legacy system. Analyzed change coupling tendency of development units and re-designed architecture fragments to reduce the current maintainability effort and to enhance the overall system evolvability.\nResearch carried as part of the Master thesis in Software Engineering",
+      "keyWords":"C++,PHP, Perforce, SQL, Visual Studio, Digital Publishing, Design Patterns"
+    },
+    {
+      "role": "Professor Assistant in Software Design",
+      "company": "Vrije Universiteit Amsterdam",
+      "logoUrl": "https://media.licdn.com/media/p/2/000/015/107/07924c9.jpg",
+      "start": "4-2012",
+      "end": "5-2012",
+      "description":"Professor Assistant for the course of Software Modeling of the Prof. Patricia Lago",
+      "keyWords":"Software Design, SOA, UML"
+    }
+  ]
+}

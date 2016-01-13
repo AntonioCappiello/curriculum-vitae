@@ -1,0 +1,44 @@
+{
+  "book": [
+    {
+      "name":"The Pragmatic Programmer: From Journeyman to Master",
+      "author":"Andrew Hunt, David Thomas",
+      "coverImageUrl":"http://bit.ly/1LuoIhh"
+    },
+    {
+      "name":"Continuous Delivery: Reliable Software Releases through Build, Test, and Deployment Automation",
+      "author":"ez Humble, David Farley",
+      "coverImageUrl":"http://bit.ly/1VYKHSc"
+    },
+    {
+      "name":"Code Complete: A Practical Handbook of Software Construction",
+      "author":"Steve McConnell",
+      "coverImageUrl":"http://bit.ly/1GMImD8"
+    },
+    {
+      "name":"The Mythical Man-Month: Essays on Software Engineering",
+      "author":"Frederick P. Brooks Jr.",
+      "coverImageUrl":"http://bit.ly/1KhtKf8"
+    },
+    {
+      "name":"Don’t Make Me Think, Revisited: A Common Sense Approach to Web Usability",
+      "author":"Steve Krug",
+      "coverImageUrl":"http://bit.ly/1XcAUdY"
+    },
+    {
+      "name":"Test Driven Development: By Example",
+      "author":"Kent Beck",
+      "coverImageUrl":"http://bit.ly/1GMJxCt"
+    },
+    {
+      "name":"Refactoring: Improving the Design of Existing Code ",
+      "author":"Martin Fowler, Kent Beck, John Brant, William Opdyke, Don Roberts",
+      "coverImageUrl":"http://bit.ly/1VYKLBE"
+    },
+    {
+      "name":"Soft Skills: The software developer’s life manual",
+      "author":"John Sonmez",
+      "coverImageUrl":"http://goo.gl/BUUlAu"
+    }
+  ]
+}
