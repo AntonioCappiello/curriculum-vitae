@@ -2,6 +2,8 @@ package com.antoniocappiello.curriculumvitae.presenter.entityhandler;
 
 import com.antoniocappiello.curriculumvitae.model.Book;
 
+import java.util.List;
+
 public class BookEntityOrchestrator {
 
     private BookValidator mValidator;
@@ -15,6 +17,12 @@ public class BookEntityOrchestrator {
     public void save(Book book){
         if(mValidator.isValid(book)){
             mSaver.save(book);
+        }
+    }
+
+    public void save(List<Book> bookList) {
+        for(Book book: bookList){
+            save(book);
         }
     }
 }
