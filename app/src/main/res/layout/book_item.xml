@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Created by Antonio Cappiello on 1/13/16 9:31 PM
+  ~ Copyright (c) 2016. All rights reserved.
+  ~
+  ~ Last modified 1/11/16 12:22 AM
+  -->
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_marginBottom="13dp"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/book_item_height">
+
+    <ImageView
+        android:id="@+id/bookCoverImage"
+        android:layout_width="120dp"
+        android:layout_height="match_parent"
+        android:scaleType="fitCenter"/>
+
+    <TextView
+        android:id="@+id/bookName"
+        android:layout_toRightOf="@+id/bookCoverImage"
+        android:textSize="@dimen/bookNameTextSize"
+        android:textStyle="bold"
+        android:text="Book Name"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/bookAuthor"
+        android:layout_toRightOf="@+id/bookCoverImage"
+        android:textStyle="italic"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="20dp"
+        android:textSize="@dimen/bookAuthorTextSize"
+        android:layout_below="@+id/bookName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Author name"/>
+
+</RelativeLayout>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Created by Antonio Cappiello on 1/13/16 9:31 PM
+  ~ Copyright (c) 2016. All rights reserved.
+  ~
+  ~ Last modified 1/10/16 9:25 PM
+  -->
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/date"
+        android:layout_marginRight="8dp"
+        android:layout_width="60dp"
+        android:layout_height="@dimen/timeline_circle_size"
+        android:gravity="center_vertical|end"
+        android:textSize="@dimen/timeline_date_text_size"
+        android:textStyle="bold"
+        android:text="MM-YYYY"/>
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_toRightOf="@+id/date"
+        android:id="@+id/logo"
+        android:layout_width="@dimen/timeline_circle_size"
+        android:layout_height="@dimen/timeline_circle_size"
+        app:civ_border_width="2dp"
+        android:background="@drawable/circle_solid_red"
+        app:civ_border_color="@color/primary"/>
+
+    <TextView
+        android:id="@+id/timeline_title"
+        android:layout_toRightOf="@+id/logo"
+        android:layout_marginLeft="15dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Timeline title"
+        android:textStyle="bold"
+        android:textSize="@dimen/timeline_title_text_size"/>
+
+    <TextView
+        android:id="@+id/timeline_subtitle"
+        android:layout_toRightOf="@+id/logo"
+        android:layout_below="@+id/timeline_title"
+        android:layout_marginLeft="15dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Timeline subtitle"
+        android:textStyle="italic"
+        android:textSize="@dimen/timeline_subtitle_text_size"/>
+
+    <View
+        android:id="@+id/line"
+        android:layout_width="@dimen/timeline_line_width"
+        android:layout_height="@dimen/timeline_step_height"
+        android:background="@color/primary_dark"
+        android:layout_marginLeft="@dimen/timeline_circle_size_half_minus_line_width"
+        android:layout_below="@+id/logo"
+        android:layout_toEndOf="@+id/date"/>
+
+
+</RelativeLayout>

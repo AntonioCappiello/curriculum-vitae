@@ -1,0 +1,29 @@
+<!--
+  ~ Created by Antonio Cappiello on 1/13/16 9:31 PM
+  ~ Copyright (c) 2016. All rights reserved.
+  ~
+  ~ Last modified 1/11/16 11:26 PM
+  -->
+
+<resources>
+    <string name="app_name">CV Antonio Cappiello</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="name">Antonio Cappiello</string>
+    <string name="email">antoniocappiello1@gmail.com</string>
+    <string name="personal_info">Something about me</string>
+    <string name="education">Education</string>
+    <string name="work_experience">Work Experience</string>
+    <string name="interests">Interests</string>
+    <string name="library">Library</string>
+    <string name="ful_name">Full name</string>
+    <string name="nationality">Nationality</string>
+    <string name="overview">Overview</string>
+    <string name="career">Career</string>
+    <string name="free_time">Free time</string>
+    <string name="error_web_api_query_failed">Cannot load data. Check network.</string>
+    <string name="retry">Retry</string>
+</resources>

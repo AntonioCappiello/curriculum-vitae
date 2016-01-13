@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Created by Antonio Cappiello on 1/13/16 9:31 PM
+  ~ Copyright (c) 2016. All rights reserved.
+  ~
+  ~ Last modified 1/11/16 6:46 PM
+  -->
+
+<resources>
+
+    <declare-styleable name="GifView">
+        <attr name="gif" format="reference" />
+        <attr name="paused" format="boolean" />
+    </declare-styleable>
+    <declare-styleable name="CustomTheme">
+        <attr name="gifViewStyle" format="reference" />
+    </declare-styleable>
+    
+</resources>
