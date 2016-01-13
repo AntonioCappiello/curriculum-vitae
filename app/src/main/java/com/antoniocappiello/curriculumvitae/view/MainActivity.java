@@ -8,6 +8,7 @@
 package com.antoniocappiello.curriculumvitae.view;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.ActivityOptionsCompat;
@@ -150,6 +151,9 @@ public class MainActivity extends AppCompatActivity
             FabricTracker.log(Goal.CV_SHARED);
         } else if (id == R.id.nav_download) {
             FabricTracker.log(Goal.CV_DOWNLOADED);
+            Uri cvUri = Uri.parse(BuildConfig.URL_CURRICULUM_VITAE);
+            Intent intent = new Intent(Intent.ACTION_VIEW).setData(cvUri);
+            startActivity(intent);
         }
 
         mDrawerLayout.closeDrawer(GravityCompat.START);
