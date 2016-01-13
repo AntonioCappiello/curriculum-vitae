@@ -32,6 +32,7 @@ final JAVAX_ANNOTATION_VERSION = '10.0-b28'
 final ESPRESSO_VERSION = '2.2.1'
 final ESPRESSO_RUNNER_VERSION = '0.4'
 final SUPPORT_ANNOTATION_VERSION = '23.1.1'
+final CRASHLYTICS_VERSION = '2.5.5'
 
 android {
     compileSdkVersion 23
@@ -93,7 +94,7 @@ dependencies {
     androidTestCompile "com.android.support.test.espresso:espresso-core:${ESPRESSO_VERSION}"
     androidTestApt "com.google.dagger:dagger-compiler:${DAGGER_VERSION}"
     androidTestCompile "com.android.support:support-annotations:${SUPPORT_ANNOTATION_VERSION}"
-    compile('com.crashlytics.sdk.android:crashlytics:2.5.5@aar') {
+    compile("com.crashlytics.sdk.android:crashlytics:${CRASHLYTICS_VERSION}@aar") {
         transitive = true;
     }
 }
