@@ -1,4 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Created by Antonio Cappiello on 1/13/16 9:31 PM
+  ~ Copyright (c) 2016. All rights reserved.
+  ~
+  ~ Last modified 1/9/16 3:03 PM
+  -->
+
 <resources>
     <color name="primary">#F44336</color>
     <color name="primary_dark">#D32F2F</color>

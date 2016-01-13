@@ -1,3 +1,10 @@
+/*
+ * Created by Antonio Cappiello on 1/13/16 9:31 PM
+ * Copyright (c) 2016. All rights reserved.
+ *
+ * Last modified 1/13/16 9:30 PM
+ */
+
 package com.antoniocappiello.curriculumvitae;
 
 import android.app.Application;
@@ -5,14 +12,12 @@ import android.content.ContextWrapper;
 
 import com.antoniocappiello.curriculumvitae.model.Book;
 import com.antoniocappiello.curriculumvitae.presenter.AssetUtils;
-import com.antoniocappiello.curriculumvitae.presenter.entityhandler.BookEntityOrchestrator;
 import com.antoniocappiello.curriculumvitae.presenter.injector.AppComponent;
 import com.antoniocappiello.curriculumvitae.presenter.injector.AppModule;
 import com.antoniocappiello.curriculumvitae.presenter.injector.DaggerAppComponent;
 import com.antoniocappiello.curriculumvitae.presenter.parser.BookJsonParser;
 import com.crashlytics.android.Crashlytics;
 import com.google.gson.Gson;
-import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
@@ -23,9 +28,10 @@ import com.orhanobut.logger.Logger;
 import com.pixplicity.easyprefs.library.Prefs;
 import com.raizlabs.android.dbflow.config.FlowManager;
 
-import io.fabric.sdk.android.Fabric;
 import java.io.IOException;
 import java.util.List;
+
+import io.fabric.sdk.android.Fabric;
 
 public class App extends Application {
 

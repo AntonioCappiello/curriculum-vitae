@@ -1,3 +1,10 @@
+/*
+ * Created by Antonio Cappiello on 1/13/16 9:31 PM
+ * Copyright (c) 2016. All rights reserved.
+ *
+ * Last modified 1/13/16 9:24 PM
+ */
+
 package com.antoniocappiello.curriculumvitae.view;
 
 import android.os.Bundle;
@@ -25,8 +32,8 @@ import com.antoniocappiello.curriculumvitae.presenter.adapter.WrappingLinearLayo
 import com.antoniocappiello.curriculumvitae.presenter.entityhandler.BookReader;
 import com.antoniocappiello.curriculumvitae.presenter.event.EducationReceivedEvent;
 import com.antoniocappiello.curriculumvitae.presenter.event.WorkExperienceReceivedEvent;
-import com.antoniocappiello.curriculumvitae.presenter.tracker.FabricTracker.Goal;
 import com.antoniocappiello.curriculumvitae.presenter.tracker.FabricTracker;
+import com.antoniocappiello.curriculumvitae.presenter.tracker.FabricTracker.Goal;
 import com.antoniocappiello.curriculumvitae.presenter.webapi.WebApi;
 import com.antoniocappiello.curriculumvitae.presenter.webapi.WebApiService;
 import com.orhanobut.logger.Logger;

@@ -1,3 +1,10 @@
+/*
+ * Created by Antonio Cappiello on 1/13/16 9:31 PM
+ * Copyright (c) 2016. All rights reserved.
+ *
+ * Last modified 1/11/16 11:26 PM
+ */
+
 package com.antoniocappiello.curriculumvitae.model;
 
 import com.google.gson.annotations.SerializedName;

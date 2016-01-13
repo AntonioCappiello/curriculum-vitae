@@ -1,3 +1,10 @@
+/*
+ * Created by Antonio Cappiello on 1/13/16 9:31 PM
+ * Copyright (c) 2016. All rights reserved.
+ *
+ * Last modified 1/13/16 9:24 PM
+ */
+
 package com.antoniocappiello.curriculumvitae.view;
 
 import android.content.Intent;
@@ -25,8 +32,8 @@ import com.antoniocappiello.curriculumvitae.R;
 import com.antoniocappiello.curriculumvitae.model.Category;
 import com.antoniocappiello.curriculumvitae.presenter.adapter.CategoryAdapter;
 import com.antoniocappiello.curriculumvitae.presenter.event.CategoryClickedEvent;
-import com.antoniocappiello.curriculumvitae.presenter.tracker.FabricTracker.Goal;
 import com.antoniocappiello.curriculumvitae.presenter.tracker.FabricTracker;
+import com.antoniocappiello.curriculumvitae.presenter.tracker.FabricTracker.Goal;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;

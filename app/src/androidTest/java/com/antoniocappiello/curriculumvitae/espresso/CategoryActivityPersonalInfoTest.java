@@ -1,3 +1,10 @@
+/*
+ * Created by Antonio Cappiello on 1/13/16 9:31 PM
+ * Copyright (c) 2016. All rights reserved.
+ *
+ * Last modified 1/11/16 11:26 PM
+ */
+
 package com.antoniocappiello.curriculumvitae.espresso;
 
 import android.content.Context;
@@ -15,7 +22,6 @@ import com.antoniocappiello.curriculumvitae.model.Category;
 import com.antoniocappiello.curriculumvitae.presenter.webapi.WebApiService;
 import com.antoniocappiello.curriculumvitae.view.CategoryActivity;
 import com.antoniocappiello.curriculumvitae.view.MainActivity;
-import com.google.gson.JsonElement;
 
 import org.junit.Before;
 import org.junit.Rule;
