@@ -1,124 +1,141 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
-              android:layout_width="match_parent"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                     android:orientation="vertical"
+                     android:layout_width="match_parent"
               android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/full_name"
-        android:layout_width="@dimen/about_me_header_width"
-        android:layout_height="wrap_content"
-        android:textStyle="bold"
-        android:gravity="end"
-        android:textColor="@color/secondary_text"
-        android:textSize="@dimen/category_title_text_size"
-        android:text="@string/ful_name"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-    <View
-        android:id="@+id/line"
-        android:layout_toRightOf="@+id/full_name"
-        android:layout_width="1dp"
-        android:layout_marginLeft="7dp"
-        android:layout_marginRight="7dp"
-        android:layout_height="1150dp"
-        android:background="@color/divider"/>
+        <TextView
+            android:id="@+id/full_name"
+            android:layout_width="@dimen/about_me_header_width"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:gravity="end"
+            android:textColor="@color/secondary_text"
+            android:textSize="@dimen/category_title_text_size"
+            android:text="@string/ful_name"/>
 
-    <TextView
-        android:id="@+id/full_name_value"
-        android:layout_toRightOf="@id/line"
-        android:layout_alignBaseline="@+id/full_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Name Surname"
-        android:textSize="@dimen/category_title_text_size"
-        android:textColor="@color/primary_text"/>
+        <TextView
+            android:id="@+id/full_name_value"
+            android:layout_marginLeft="15dp"
+            android:layout_toRightOf="@id/full_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Name Surname"
+            android:textSize="@dimen/category_title_text_size"
+            android:textColor="@color/primary_text"/>
 
-    <TextView
-        android:id="@+id/nationality"
+    </RelativeLayout>
+
+    <RelativeLayout
         android:layout_marginTop="10dp"
-        android:layout_below="@+id/full_name_value"
-        android:layout_width="@dimen/about_me_header_width"
-        android:layout_height="wrap_content"
-        android:textStyle="bold"
-        android:gravity="end"
-        android:textColor="@color/secondary_text"
-        android:textSize="@dimen/category_title_text_size"
-        android:text="@string/nationality"/>
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/nationality_value"
-        android:layout_toRightOf="@id/line"
-        android:layout_alignBaseline="@+id/nationality"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Country\nName"
-        android:textSize="@dimen/category_title_text_size"
-        android:textColor="@color/primary_text"/>
+        <TextView
+            android:id="@+id/nationality"
+            android:layout_width="@dimen/about_me_header_width"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:gravity="end"
+            android:textColor="@color/secondary_text"
+            android:textSize="@dimen/category_title_text_size"
+            android:text="@string/nationality"/>
 
-    <TextView
-        android:id="@+id/overview"
+        <TextView
+            android:id="@+id/nationality_value"
+            android:layout_marginLeft="15dp"
+            android:layout_toRightOf="@id/nationality"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Country\nName"
+            android:textSize="@dimen/category_title_text_size"
+            android:textColor="@color/primary_text"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
         android:layout_marginTop="10dp"
-        android:layout_below="@+id/nationality_value"
-        android:layout_width="@dimen/about_me_header_width"
-        android:layout_height="wrap_content"
-        android:textStyle="bold"
-        android:gravity="end"
-        android:textColor="@color/secondary_text"
-        android:textSize="@dimen/category_title_text_size"
-        android:text="@string/overview"/>
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/overview_value"
-        android:layout_toRightOf="@id/line"
-        android:layout_alignBaseline="@+id/overview"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="line 1\nline 2\nline 3"
-        android:textSize="@dimen/category_title_text_size"
-        android:textColor="@color/primary_text"/>
+        <TextView
+            android:id="@+id/overview"
+            android:layout_width="@dimen/about_me_header_width"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:gravity="end"
+            android:textColor="@color/secondary_text"
+            android:textSize="@dimen/category_title_text_size"
+            android:text="@string/overview"/>
 
-    <TextView
-        android:id="@+id/career"
+        <TextView
+            android:id="@+id/overview_value"
+            android:layout_marginLeft="15dp"
+            android:layout_toRightOf="@id/overview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="line 1\nline 2\nline 3"
+            android:textSize="@dimen/category_title_text_size"
+            android:textColor="@color/primary_text"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
         android:layout_marginTop="10dp"
-        android:layout_below="@+id/overview_value"
-        android:layout_width="@dimen/about_me_header_width"
-        android:layout_height="wrap_content"
-        android:textStyle="bold"
-        android:gravity="end"
-        android:textColor="@color/secondary_text"
-        android:textSize="@dimen/category_title_text_size"
-        android:text="@string/career"/>
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/career_value"
-        android:layout_toRightOf="@id/line"
-        android:layout_alignBaseline="@+id/career"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="line 1\nline 2\nline 3"
-        android:textSize="@dimen/category_title_text_size"
-        android:textColor="@color/primary_text"/>
+        <TextView
+            android:id="@+id/career"
+            android:layout_width="@dimen/about_me_header_width"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:gravity="end"
+            android:textColor="@color/secondary_text"
+            android:textSize="@dimen/category_title_text_size"
+            android:text="@string/career"/>
 
-    <TextView
-        android:id="@+id/free_time"
+        <TextView
+            android:id="@+id/career_value"
+            android:layout_marginLeft="15dp"
+            android:layout_toRightOf="@id/career"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="line 1\nline 2\nline 3"
+            android:textSize="@dimen/category_title_text_size"
+            android:textColor="@color/primary_text"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
         android:layout_marginTop="10dp"
-        android:layout_below="@+id/career_value"
-        android:layout_width="@dimen/about_me_header_width"
-        android:layout_height="wrap_content"
-        android:textStyle="bold"
-        android:gravity="end"
-        android:textColor="@color/secondary_text"
-        android:textSize="@dimen/category_title_text_size"
-        android:text="@string/free_time"/>
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/free_time_value"
-        android:layout_toRightOf="@id/line"
-        android:layout_alignBaseline="@+id/free_time"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="line 1\nline 2\nline 3"
-        android:textSize="@dimen/category_title_text_size"
-        android:textColor="@color/primary_text"/>
+        <TextView
+            android:id="@+id/free_time"
+            android:layout_width="@dimen/about_me_header_width"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:gravity="end"
+            android:textColor="@color/secondary_text"
+            android:textSize="@dimen/category_title_text_size"
+            android:text="@string/free_time"/>
 
-</RelativeLayout>
+        <TextView
+            android:id="@+id/free_time_value"
+            android:layout_toRightOf="@id/free_time"
+            android:layout_marginLeft="15dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="line 1\nline 2\nline 3"
+            android:textSize="@dimen/category_title_text_size"
+            android:textColor="@color/primary_text"/>
+
+    </RelativeLayout>
+
+</LinearLayout>
