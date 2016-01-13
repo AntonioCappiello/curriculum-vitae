@@ -55,8 +55,8 @@ android {
         buildConfigField 'String', 'URL_WEBSITE', '"http://antoniocappiello.com/"'
         buildConfigField 'String', 'URL_GITHUB', '"https://github.com/AntonioCappiello/"'
         buildConfigField 'String', 'URL_PLAY_STORE', '"https://play.google.com/store/apps/developer?id=Selanto+Apps"'
-        buildConfigField 'String', 'WEB_API_APP_SERVICE_URL', '"https://raw.githubusercontent.com/AntonioCappiello/curriculum-vitae/develop/app/src/main"'
-        buildConfigField 'String', 'URL_CURRICULUM_VITAE', '"https://github.com/AntonioCappiello/curriculum-vitae/raw/develop/app/src/main/assets/curriculum_vitae.pdf"'
+        buildConfigField 'String', 'WEB_API_APP_SERVICE_URL', '"https://raw.githubusercontent.com/AntonioCappiello/curriculum-vitae/master/app/src/main"'
+        buildConfigField 'String', 'URL_CURRICULUM_VITAE', '"https://github.com/AntonioCappiello/curriculum-vitae/raw/master/app/src/main/assets/curriculum_vitae.pdf"'
         testInstrumentationRunner "com.antoniocappiello.curriculumvitae.TestAppRunner"
 
     }
