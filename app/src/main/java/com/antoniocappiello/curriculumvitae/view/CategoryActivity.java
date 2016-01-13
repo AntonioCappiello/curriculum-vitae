@@ -124,6 +124,7 @@ public class CategoryActivity extends AppCompatActivity {
                 break;
             case INTERESTS:
                 FabricTracker.log(Goal.CATEGORY_INTERESTS);
+                break;
             case LIBRARY:
                 FabricTracker.log(Goal.CATEGORY_LIBRARY);
                 mRecyclerView.setVisibility(View.VISIBLE);
