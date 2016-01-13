@@ -6,8 +6,6 @@ import android.content.ContextWrapper;
 import com.antoniocappiello.curriculumvitae.model.Book;
 import com.antoniocappiello.curriculumvitae.presenter.AssetUtils;
 import com.antoniocappiello.curriculumvitae.presenter.entityhandler.BookEntityOrchestrator;
-import com.antoniocappiello.curriculumvitae.presenter.entityhandler.BookSaver;
-import com.antoniocappiello.curriculumvitae.presenter.entityhandler.BookValidator;
 import com.antoniocappiello.curriculumvitae.presenter.injector.AppComponent;
 import com.antoniocappiello.curriculumvitae.presenter.injector.AppModule;
 import com.antoniocappiello.curriculumvitae.presenter.injector.DaggerAppComponent;
@@ -47,9 +45,7 @@ public class App extends Application {
                 .build();
 
         initImageLoader();
-
         initDependencyInjection();
-
         FlowManager.init(this);
         initDatabase();
 
@@ -72,7 +68,7 @@ public class App extends Application {
         }
 
         try {
-            BookEntityOrchestrator bookEntityOrchestrator = new BookEntityOrchestrator(new BookValidator(), new BookSaver()); //TODO iject via dagger as example
+            BookEntityOrchestrator bookEntityOrchestrator = appComponent().bookEntityOrchestrator();
             String assetString = AssetUtils.readAsset(this, "library.json");
             JsonObject jsonObject = new Gson().fromJson(assetString, JsonElement.class).getAsJsonObject();
             JsonArray jsonArray = jsonObject.get("book").getAsJsonArray();
@@ -83,7 +79,6 @@ public class App extends Application {
                         bookAsJsonObject.get("coverImageUrl").getAsString()
                 );
                 bookEntityOrchestrator.save(book);
-
             }
             Prefs.putBoolean(LIBRARY_DATABASE_INITIALIZED, true);
 
