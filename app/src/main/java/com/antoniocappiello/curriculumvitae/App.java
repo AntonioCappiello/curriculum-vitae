@@ -9,6 +9,7 @@ import com.antoniocappiello.curriculumvitae.presenter.entityhandler.BookEntityOr
 import com.antoniocappiello.curriculumvitae.presenter.injector.AppComponent;
 import com.antoniocappiello.curriculumvitae.presenter.injector.AppModule;
 import com.antoniocappiello.curriculumvitae.presenter.injector.DaggerAppComponent;
+import com.antoniocappiello.curriculumvitae.presenter.parser.BookJsonParser;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
@@ -22,6 +23,7 @@ import com.pixplicity.easyprefs.library.Prefs;
 import com.raizlabs.android.dbflow.config.FlowManager;
 
 import java.io.IOException;
+import java.util.List;
 
 public class App extends Application {
 
@@ -57,34 +59,17 @@ public class App extends Application {
                 .build();
     }
 
-    public AppComponent appComponent() {
-        return appComponent;
-    }
-
     private void initDatabase() {
-
-        if(Prefs.getBoolean(LIBRARY_DATABASE_INITIALIZED, false)){
-            return;
-        }
-
-        try {
-            BookEntityOrchestrator bookEntityOrchestrator = appComponent().bookEntityOrchestrator();
-            String assetString = AssetUtils.readAsset(this, "library.json");
-            JsonObject jsonObject = new Gson().fromJson(assetString, JsonElement.class).getAsJsonObject();
-            JsonArray jsonArray = jsonObject.get("book").getAsJsonArray();
-            for(JsonElement jsonElement:jsonArray){
-                JsonObject bookAsJsonObject = jsonElement.getAsJsonObject();
-                Book book = new Book(bookAsJsonObject.get("name").getAsString(),
-                        bookAsJsonObject.get("author").getAsString(),
-                        bookAsJsonObject.get("coverImageUrl").getAsString()
-                );
-                bookEntityOrchestrator.save(book);
+        if(!Prefs.getBoolean(LIBRARY_DATABASE_INITIALIZED, false)){
+            try {
+                String assetString = AssetUtils.readAsset(this, "library.json");
+                JsonObject jsonObject = new Gson().fromJson(assetString, JsonElement.class).getAsJsonObject();
+                List<Book> bookList = BookJsonParser.parse(jsonObject);
+                appComponent().bookEntityOrchestrator().save(bookList);
+                Prefs.putBoolean(LIBRARY_DATABASE_INITIALIZED, true);
+            } catch (IOException e) {
+                Logger.e(e.toString());
             }
-            Prefs.putBoolean(LIBRARY_DATABASE_INITIALIZED, true);
-
-
-        } catch (IOException e) {
-            Logger.e(e.toString());
         }
     }
 
@@ -98,5 +83,9 @@ public class App extends Application {
                 .build();
 
         ImageLoader.getInstance().init(config);
+    }
+
+    public AppComponent appComponent() {
+        return appComponent;
     }
 }
