@@ -12,6 +12,8 @@ import com.antoniocappiello.curriculumvitae.model.Category;
 import com.antoniocappiello.curriculumvitae.presenter.event.CategoryClickedEvent;
 import com.orhanobut.logger.Logger;
 
+import butterknife.Bind;
+import butterknife.ButterKnife;
 import de.greenrobot.event.EventBus;
 
 public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHolder> {
@@ -39,15 +41,19 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        private final TextView mTitleTextView;
-        private final ImageView mImageView;
+
+        @Bind(R.id.title)
+        TextView mTitleTextView;
+
+        @Bind(R.id.image)
+        ImageView mImageView;
+
         private Category mCategory;
 
         public ViewHolder(View categoryView) {
             super(categoryView);
+            ButterKnife.bind(this, categoryView);
             categoryView.setOnClickListener(this);
-            mTitleTextView = (TextView) categoryView.findViewById(R.id.title);
-            mImageView = (ImageView) categoryView.findViewById(R.id.image);
         }
 
         @Override

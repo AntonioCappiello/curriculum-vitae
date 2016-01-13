@@ -13,6 +13,9 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 
 import java.util.List;
 
+import butterknife.Bind;
+import butterknife.ButterKnife;
+
 public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
 
     private final List<Book> mBookList;
@@ -38,15 +41,19 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        private final TextView mBookNameTextView;
-        private final TextView mBookAuthorTextView;
-        private final ImageView mBookCoverImageView;
+
+        @Bind(R.id.bookName)
+        TextView mBookNameTextView;
+
+        @Bind(R.id.bookAuthor)
+        TextView mBookAuthorTextView;
+
+        @Bind(R.id.bookCoverImage)
+        ImageView mBookCoverImageView;
 
         public ViewHolder(View rootView) {
             super(rootView);
-            mBookNameTextView = (TextView) rootView.findViewById(R.id.bookName);
-            mBookAuthorTextView = (TextView) rootView.findViewById(R.id.bookAuthor);
-            mBookCoverImageView = (ImageView) rootView.findViewById(R.id.bookCoverImage);
+            ButterKnife.bind(this, rootView);
         }
 
         public void updateView(Book book) {
