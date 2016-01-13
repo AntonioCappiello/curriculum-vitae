@@ -25,6 +25,8 @@ import com.antoniocappiello.curriculumvitae.presenter.adapter.WrappingLinearLayo
 import com.antoniocappiello.curriculumvitae.presenter.entityhandler.BookReader;
 import com.antoniocappiello.curriculumvitae.presenter.event.EducationReceivedEvent;
 import com.antoniocappiello.curriculumvitae.presenter.event.WorkExperienceReceivedEvent;
+import com.antoniocappiello.curriculumvitae.presenter.tracker.FabricTracker.Goal;
+import com.antoniocappiello.curriculumvitae.presenter.tracker.FabricTracker;
 import com.antoniocappiello.curriculumvitae.presenter.webapi.WebApi;
 import com.antoniocappiello.curriculumvitae.presenter.webapi.WebApiService;
 import com.orhanobut.logger.Logger;
@@ -101,16 +103,22 @@ public class CategoryActivity extends AppCompatActivity {
                         .subscribeOn(Schedulers.newThread())
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribe(getReadAboutMeSubscriber());
+                FabricTracker.log(Goal.CATEGORY_ABOUT_ME);
                 break;
             case EDUCATION:
                 mRecyclerView.setVisibility(View.GONE);
                 mWebApiService.readEducation();
+                FabricTracker.log(Goal.CATEGORY_EDUCATION);
                 break;
             case WORK_EXPERIENCE:
                 mRecyclerView.setVisibility(View.GONE);
                 mWebApiService.readWorkExperience();
+                FabricTracker.log(Goal.CATEGORY_WORK_EXPERIENCE);
                 break;
+            case INTERESTS:
+                FabricTracker.log(Goal.CATEGORY_INTERESTS);
             case LIBRARY:
+                FabricTracker.log(Goal.CATEGORY_LIBRARY);
                 mRecyclerView.setVisibility(View.VISIBLE);
                 mRecyclerView.setHasFixedSize(true);
                 WrappingLinearLayoutManager layoutManager = new WrappingLinearLayoutManager(this);

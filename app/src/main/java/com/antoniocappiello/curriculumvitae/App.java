@@ -10,6 +10,7 @@ import com.antoniocappiello.curriculumvitae.presenter.injector.AppComponent;
 import com.antoniocappiello.curriculumvitae.presenter.injector.AppModule;
 import com.antoniocappiello.curriculumvitae.presenter.injector.DaggerAppComponent;
 import com.antoniocappiello.curriculumvitae.presenter.parser.BookJsonParser;
+import com.crashlytics.android.Crashlytics;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
@@ -22,6 +23,7 @@ import com.orhanobut.logger.Logger;
 import com.pixplicity.easyprefs.library.Prefs;
 import com.raizlabs.android.dbflow.config.FlowManager;
 
+import io.fabric.sdk.android.Fabric;
 import java.io.IOException;
 import java.util.List;
 
@@ -33,6 +35,10 @@ public class App extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+
+        if(BuildConfig.USE_CRASHLYTICS) {
+            Fabric.with(this, new Crashlytics());
+        }
 
         Logger.init()
                 .setMethodCount(1)
@@ -50,7 +56,6 @@ public class App extends Application {
         initDependencyInjection();
         FlowManager.init(this);
         initDatabase();
-
     }
 
     private void initDependencyInjection() {

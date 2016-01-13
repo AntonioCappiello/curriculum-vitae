@@ -38,3 +38,6 @@ proguard/
 
 # Windows clutter
 Thumbs.db
+
+#API secret and keys
+app/fabric.properties

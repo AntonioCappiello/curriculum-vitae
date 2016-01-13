@@ -25,6 +25,8 @@ import com.antoniocappiello.curriculumvitae.R;
 import com.antoniocappiello.curriculumvitae.model.Category;
 import com.antoniocappiello.curriculumvitae.presenter.adapter.CategoryAdapter;
 import com.antoniocappiello.curriculumvitae.presenter.event.CategoryClickedEvent;
+import com.antoniocappiello.curriculumvitae.presenter.tracker.FabricTracker.Goal;
+import com.antoniocappiello.curriculumvitae.presenter.tracker.FabricTracker;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -118,25 +120,29 @@ public class MainActivity extends AppCompatActivity
             mWebView.setVisibility(View.GONE);
             mRecyclerView.setVisibility(View.VISIBLE);
         } else if (id == R.id.nav_website) {
+            FabricTracker.log(Goal.WEBSITE_VISITED);
             mWebView.setVisibility(View.VISIBLE);
             mRecyclerView.setVisibility(View.GONE);
             mWebView.loadUrl(BuildConfig.URL_WEBSITE);
         } else if (id == R.id.nav_github) {
+            FabricTracker.log(Goal.GITHUB_PROFILE_VISITED);
             mWebView.setVisibility(View.VISIBLE);
             mRecyclerView.setVisibility(View.GONE);
             mWebView.loadUrl(BuildConfig.URL_GITHUB);
         } else if (id == R.id.nav_play_store) {
+            FabricTracker.log(Goal.PLAY_STORE_VISITED);
             mWebView.setVisibility(View.VISIBLE);
             mRecyclerView.setVisibility(View.GONE);
             mWebView.loadUrl(BuildConfig.URL_PLAY_STORE);
         } else if (id == R.id.nav_stackoverflow) {
+            FabricTracker.log(Goal.STACKOVERFLOW_VISITED);
             mWebView.setVisibility(View.VISIBLE);
             mRecyclerView.setVisibility(View.GONE);
             mWebView.loadUrl(BuildConfig.URL_STACKOVERFLOW);
         } else if (id == R.id.nav_share) {
-
+            FabricTracker.log(Goal.CV_SHARED);
         } else if (id == R.id.nav_download) {
-
+            FabricTracker.log(Goal.CV_DOWNLOADED);
         }
 
         mDrawerLayout.closeDrawer(GravityCompat.START);
