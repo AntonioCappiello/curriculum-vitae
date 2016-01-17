@@ -41,3 +41,4 @@ Thumbs.db
 
 #API secret and keys
 app/fabric.properties
+app/google-services.json

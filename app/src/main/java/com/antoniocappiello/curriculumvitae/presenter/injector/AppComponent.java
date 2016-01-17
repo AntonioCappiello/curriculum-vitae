@@ -16,6 +16,8 @@ import com.antoniocappiello.curriculumvitae.presenter.entityhandler.BookValidato
 import com.antoniocappiello.curriculumvitae.presenter.webapi.WebApi;
 import com.antoniocappiello.curriculumvitae.presenter.webapi.WebApiService;
 import com.antoniocappiello.curriculumvitae.view.CategoryActivity;
+import com.antoniocappiello.curriculumvitae.view.MainActivity;
+import com.google.android.gms.analytics.Tracker;
 
 import dagger.Component;
 
@@ -23,6 +25,7 @@ import dagger.Component;
 @Component(modules = AppModule.class)
 public interface AppComponent {
 
+    void inject(MainActivity activity);
     void inject(CategoryActivity activity);
     void inject(App app);
 
@@ -34,4 +37,5 @@ public interface AppComponent {
     BookValidator bookValidator();
     BookSaver bookSaver();
     BookEntityOrchestrator bookEntityOrchestrator();
+    Tracker gaTracker();
 }

@@ -28,6 +28,7 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
+import com.antoniocappiello.curriculumvitae.App;
 import com.antoniocappiello.curriculumvitae.BuildConfig;
 import com.antoniocappiello.curriculumvitae.R;
 import com.antoniocappiello.curriculumvitae.model.Category;
@@ -35,6 +36,10 @@ import com.antoniocappiello.curriculumvitae.presenter.adapter.CategoryAdapter;
 import com.antoniocappiello.curriculumvitae.presenter.event.CategoryClickedEvent;
 import com.antoniocappiello.curriculumvitae.presenter.tracker.FabricTracker;
 import com.antoniocappiello.curriculumvitae.presenter.tracker.FabricTracker.Goal;
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
+
+import javax.inject.Inject;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -58,11 +63,15 @@ public class MainActivity extends AppCompatActivity
     @Bind(R.id.category_recycler_view)
     RecyclerView mRecyclerView;
 
+    @Inject
+    Tracker gaTracker;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+        inject();
 
         setSupportActionBar(mToolbar);
 
@@ -70,6 +79,10 @@ public class MainActivity extends AppCompatActivity
         initWebView();
         initCategoryRecyclerView();
 
+    }
+
+    private void inject() {
+        ((App)getApplication()).appComponent().inject(this);
     }
 
     private void initCategoryRecyclerView() {
@@ -170,6 +183,13 @@ public class MainActivity extends AppCompatActivity
     public void onStop() {
         EventBus.getDefault().unregister(this);
         super.onStop();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        gaTracker.setScreenName(this.getLocalClassName());
+        gaTracker.send(new HitBuilders.ScreenViewBuilder().build());
     }
 
     public void onEvent(CategoryClickedEvent event){

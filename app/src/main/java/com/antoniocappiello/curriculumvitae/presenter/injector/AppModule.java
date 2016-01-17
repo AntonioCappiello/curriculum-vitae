@@ -10,11 +10,14 @@ package com.antoniocappiello.curriculumvitae.presenter.injector;
 import android.content.Context;
 
 import com.antoniocappiello.curriculumvitae.BuildConfig;
+import com.antoniocappiello.curriculumvitae.R;
 import com.antoniocappiello.curriculumvitae.presenter.entityhandler.BookEntityOrchestrator;
 import com.antoniocappiello.curriculumvitae.presenter.entityhandler.BookSaver;
 import com.antoniocappiello.curriculumvitae.presenter.entityhandler.BookValidator;
 import com.antoniocappiello.curriculumvitae.presenter.webapi.WebApi;
 import com.antoniocappiello.curriculumvitae.presenter.webapi.WebApiService;
+import com.google.android.gms.analytics.GoogleAnalytics;
+import com.google.android.gms.analytics.Tracker;
 import com.google.gson.Gson;
 
 import dagger.Module;
@@ -65,6 +68,13 @@ public class AppModule {
     @Provides
     public BookEntityOrchestrator provideBookEntityOrchestrator(BookValidator bookValidator, BookSaver bookSaver){
         return new BookEntityOrchestrator(new BookValidator(), new BookSaver());
+    }
+
+    @Provides
+    public Tracker provideGaTracker(){
+        GoogleAnalytics analytics = GoogleAnalytics.getInstance(context);
+        analytics.setLocalDispatchPeriod(BuildConfig.GA_DISPATCH_INTERVAL);
+        return analytics.newTracker(R.xml.global_tracker);
     }
 
 }
