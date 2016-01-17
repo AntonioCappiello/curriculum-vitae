@@ -9,8 +9,14 @@ package com.antoniocappiello.curriculumvitae.injector;
 
 
 import com.antoniocappiello.curriculumvitae.espresso.CategoryActivityPersonalInfoTest;
+import com.antoniocappiello.curriculumvitae.mock.MockWebApi;
+import com.antoniocappiello.curriculumvitae.presenter.entityhandler.BookEntityOrchestrator;
+import com.antoniocappiello.curriculumvitae.presenter.entityhandler.BookSaver;
+import com.antoniocappiello.curriculumvitae.presenter.entityhandler.BookValidator;
 import com.antoniocappiello.curriculumvitae.presenter.injector.AppComponent;
 import com.antoniocappiello.curriculumvitae.presenter.injector.AppScope;
+import com.antoniocappiello.curriculumvitae.presenter.webapi.WebApi;
+import com.antoniocappiello.curriculumvitae.presenter.webapi.WebApiService;
 
 import dagger.Component;
 
@@ -19,4 +25,11 @@ import dagger.Component;
 public interface TestAppComponent extends AppComponent {
 
     void inject(CategoryActivityPersonalInfoTest test);
+
+    WebApi webApi();
+    WebApiService webApiService();
+
+    BookValidator bookValidator();
+    BookSaver bookSaver();
+    BookEntityOrchestrator bookEntityOrchestrator();
 }

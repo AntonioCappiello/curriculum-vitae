@@ -10,6 +10,9 @@ package com.antoniocappiello.curriculumvitae.injector;
 import android.content.Context;
 
 import com.antoniocappiello.curriculumvitae.mock.MockWebApi;
+import com.antoniocappiello.curriculumvitae.presenter.entityhandler.BookEntityOrchestrator;
+import com.antoniocappiello.curriculumvitae.presenter.entityhandler.BookSaver;
+import com.antoniocappiello.curriculumvitae.presenter.entityhandler.BookValidator;
 import com.antoniocappiello.curriculumvitae.presenter.injector.AppScope;
 import com.antoniocappiello.curriculumvitae.presenter.webapi.WebApi;
 import com.antoniocappiello.curriculumvitae.presenter.webapi.WebApiService;
@@ -41,6 +44,21 @@ public class TestAppModule {
     @Provides
     public WebApiService provideWebApiService(WebApi webApi){
         return new WebApiService(webApi);
+    }
+
+    @Provides
+    public BookValidator provideBookValidator(){
+        return new BookValidator();
+    }
+
+    @Provides
+    public BookSaver provideBookSaver(){
+        return new BookSaver();
+    }
+
+    @Provides
+    public BookEntityOrchestrator provideBookEntityOrchestrator(BookValidator bookValidator, BookSaver bookSaver){
+        return new BookEntityOrchestrator(new BookValidator(), new BookSaver());
     }
 
 }
