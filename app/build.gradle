@@ -22,6 +22,8 @@ repositories {
 }
 
 apply plugin: 'com.neenbedankt.android-apt'
+apply plugin: 'com.google.gms.google-services'
+
 
 final DAGGER_VERSION = '2.0.2'
 final DBFLOW_VERSION = '3.0.0-beta1'
@@ -40,6 +42,7 @@ final ESPRESSO_VERSION = '2.2.1'
 final ESPRESSO_RUNNER_VERSION = '0.4'
 final SUPPORT_ANNOTATION_VERSION = '23.1.1'
 final CRASHLYTICS_VERSION = '2.5.5'
+final GOOGLE_ANALYTICS_VERSION = '8.3.0'
 
 android {
     compileSdkVersion 23
@@ -57,6 +60,7 @@ android {
         buildConfigField 'String', 'URL_PLAY_STORE', '"https://play.google.com/store/apps/developer?id=Selanto+Apps"'
         buildConfigField 'String', 'WEB_API_APP_SERVICE_URL', '"https://raw.githubusercontent.com/AntonioCappiello/curriculum-vitae/master/app/src/main"'
         buildConfigField 'String', 'URL_CURRICULUM_VITAE', '"https://github.com/AntonioCappiello/curriculum-vitae/raw/master/app/src/main/assets/curriculum_vitae.pdf"'
+        buildConfigField 'int', 'GA_DISPATCH_INTERVAL', '10'
         testInstrumentationRunner "com.antoniocappiello.curriculumvitae.TestAppRunner"
 
     }
@@ -104,4 +108,5 @@ dependencies {
     compile("com.crashlytics.sdk.android:crashlytics:${CRASHLYTICS_VERSION}@aar") {
         transitive = true;
     }
+    compile "com.google.android.gms:play-services-analytics:${GOOGLE_ANALYTICS_VERSION}"
 }

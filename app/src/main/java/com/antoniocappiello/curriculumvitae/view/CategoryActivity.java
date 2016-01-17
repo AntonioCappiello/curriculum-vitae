@@ -36,6 +36,8 @@ import com.antoniocappiello.curriculumvitae.presenter.tracker.FabricTracker;
 import com.antoniocappiello.curriculumvitae.presenter.tracker.FabricTracker.Goal;
 import com.antoniocappiello.curriculumvitae.presenter.webapi.WebApi;
 import com.antoniocappiello.curriculumvitae.presenter.webapi.WebApiService;
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
 import com.orhanobut.logger.Logger;
 
 import java.util.Collections;
@@ -81,6 +83,9 @@ public class CategoryActivity extends AppCompatActivity {
 
     @Inject
     WebApiService mWebApiService;
+
+    @Inject
+    Tracker gaTracker;
 
     private Category mCategory;
 
@@ -230,6 +235,13 @@ public class CategoryActivity extends AppCompatActivity {
     public void onStop() {
         EventBus.getDefault().unregister(this);
         super.onStop();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        gaTracker.setScreenName(this.getLocalClassName() + " (" + mCategory.name() +")");
+        gaTracker.send(new HitBuilders.ScreenViewBuilder().build());
     }
 
     public void onEvent(EducationReceivedEvent event){
