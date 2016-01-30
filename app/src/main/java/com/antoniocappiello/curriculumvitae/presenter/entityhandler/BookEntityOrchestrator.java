@@ -8,22 +8,34 @@
 package com.antoniocappiello.curriculumvitae.presenter.entityhandler;
 
 import com.antoniocappiello.curriculumvitae.model.Book;
+import com.orhanobut.logger.Logger;
 
 import java.util.List;
 
 public class BookEntityOrchestrator {
 
-    private BookValidator mValidator;
-    private BookSaver mSaver;
+    private BookReader mBookReader;
+    private BookValidator mBookValidator;
+    private BookSaver mBookSaver;
 
-    public BookEntityOrchestrator(BookValidator validator, BookSaver saver) {
-        mValidator = validator;
-        mSaver = saver;
+    public BookEntityOrchestrator(BookReader bookReader, BookValidator bookValidator, BookSaver bookSaver) {
+        mBookReader = bookReader;
+        mBookValidator = bookValidator;
+        mBookSaver = bookSaver;
     }
 
     public void save(Book book){
-        if(mValidator.isValid(book)){
-            mSaver.save(book);
+        if(!mBookReader.hasBookWithName(book.getName())){
+            if (mBookValidator.isValid(book)) {
+                mBookSaver.save(book);
+                Logger.d("SAVED " + book.toString());
+            }
+            else {
+                Logger.e("INVALID BOOK " + book.toString());
+            }
+        }
+        else {
+            Logger.e("BOOK WITH NAME " + book.getName() + " ALREADY SAVED");
         }
     }
 
