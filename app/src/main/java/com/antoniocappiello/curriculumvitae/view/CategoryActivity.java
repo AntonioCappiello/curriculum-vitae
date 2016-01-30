@@ -137,7 +137,7 @@ public class CategoryActivity extends AppCompatActivity {
                 WrappingLinearLayoutManager layoutManager = new WrappingLinearLayoutManager(this);
                 mRecyclerView.setLayoutManager(layoutManager);
 
-                BookAdapter bookAdapter = new BookAdapter(new BookReader().read());
+                BookAdapter bookAdapter = new BookAdapter(new BookReader().readAll());
                 mRecyclerView.setAdapter(bookAdapter);
                 break;
         }

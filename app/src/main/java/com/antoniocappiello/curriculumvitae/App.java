@@ -12,6 +12,7 @@ import android.content.ContextWrapper;
 
 import com.antoniocappiello.curriculumvitae.model.Book;
 import com.antoniocappiello.curriculumvitae.presenter.AssetUtils;
+import com.antoniocappiello.curriculumvitae.presenter.entityhandler.BookEntityOrchestrator;
 import com.antoniocappiello.curriculumvitae.presenter.injector.AppComponent;
 import com.antoniocappiello.curriculumvitae.presenter.injector.AppModule;
 import com.antoniocappiello.curriculumvitae.presenter.injector.DaggerAppComponent;
@@ -31,12 +32,17 @@ import com.raizlabs.android.dbflow.config.FlowManager;
 import java.io.IOException;
 import java.util.List;
 
+import javax.inject.Inject;
+
 import io.fabric.sdk.android.Fabric;
 
 public class App extends Application {
 
     private static final String LIBRARY_DATABASE_INITIALIZED = "libDbInit";
     private AppComponent appComponent;
+
+    @Inject
+    BookEntityOrchestrator mBookEntityOrchestrator;
 
     @Override
     public void onCreate() {
@@ -68,6 +74,7 @@ public class App extends Application {
         appComponent = DaggerAppComponent.builder()
                 .appModule(new AppModule(this))
                 .build();
+        appComponent.inject(this);
     }
 
     private void initDatabase() {
@@ -76,7 +83,7 @@ public class App extends Application {
                 String assetString = AssetUtils.readAsset(this, "library.json");
                 JsonObject jsonObject = new Gson().fromJson(assetString, JsonElement.class).getAsJsonObject();
                 List<Book> bookList = BookJsonParser.parse(jsonObject);
-                appComponent().bookEntityOrchestrator().save(bookList);
+                mBookEntityOrchestrator.save(bookList);
                 Prefs.putBoolean(LIBRARY_DATABASE_INITIALIZED, true);
             } catch (IOException e) {
                 Logger.e(e.toString());

@@ -12,6 +12,7 @@ import android.content.Context;
 import com.antoniocappiello.curriculumvitae.BuildConfig;
 import com.antoniocappiello.curriculumvitae.R;
 import com.antoniocappiello.curriculumvitae.presenter.entityhandler.BookEntityOrchestrator;
+import com.antoniocappiello.curriculumvitae.presenter.entityhandler.BookReader;
 import com.antoniocappiello.curriculumvitae.presenter.entityhandler.BookSaver;
 import com.antoniocappiello.curriculumvitae.presenter.entityhandler.BookValidator;
 import com.antoniocappiello.curriculumvitae.presenter.webapi.WebApi;
@@ -66,8 +67,13 @@ public class AppModule {
     }
 
     @Provides
-    public BookEntityOrchestrator provideBookEntityOrchestrator(BookValidator bookValidator, BookSaver bookSaver){
-        return new BookEntityOrchestrator(new BookValidator(), new BookSaver());
+    public BookReader provideBookReader(){
+        return new BookReader();
+    }
+
+    @Provides
+    public BookEntityOrchestrator provideBookEntityOrchestrator(BookReader bookReader, BookValidator bookValidator, BookSaver bookSaver){
+        return new BookEntityOrchestrator(bookReader, bookValidator, bookSaver);
     }
 
     @Provides

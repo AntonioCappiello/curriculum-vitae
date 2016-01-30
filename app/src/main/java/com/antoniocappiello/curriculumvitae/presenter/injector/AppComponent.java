@@ -11,6 +11,7 @@ import android.content.Context;
 
 import com.antoniocappiello.curriculumvitae.App;
 import com.antoniocappiello.curriculumvitae.presenter.entityhandler.BookEntityOrchestrator;
+import com.antoniocappiello.curriculumvitae.presenter.entityhandler.BookReader;
 import com.antoniocappiello.curriculumvitae.presenter.entityhandler.BookSaver;
 import com.antoniocappiello.curriculumvitae.presenter.entityhandler.BookValidator;
 import com.antoniocappiello.curriculumvitae.presenter.webapi.WebApi;
@@ -36,6 +37,7 @@ public interface AppComponent {
     WebApiService webApiService();
     BookValidator bookValidator();
     BookSaver bookSaver();
+    BookReader bookReader();
     BookEntityOrchestrator bookEntityOrchestrator();
     Tracker gaTracker();
 }
